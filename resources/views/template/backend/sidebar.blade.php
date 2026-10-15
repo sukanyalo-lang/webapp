@@ -3,8 +3,8 @@
   <div id="sidebar" class="sidebar sidebar-with-footer">
     <div class="app-brand">
       <a href="{{ route('dashboard') }}">
-        <img src="{{ asset('asset/backend/images/logo.png') }}" alt="Pet Finder">
-        <span class="brand-name">PET FINDER</span>
+        <i class="mdi mdi-paw" aria-hidden="true"></i>
+        <span class="brand-name">Pet Finder</span>
       </a>
     </div>
     <div class="sidebar-left" data-simplebar style="height: 100%;">
@@ -12,14 +12,14 @@
         <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
           <a class="sidenav-item-link" href="{{ route('dashboard') }}">
             <i class="mdi mdi-view-dashboard-outline"></i>
-            <span class="nav-text">Dashboard</span>
+            <span class="nav-text">แดชบอร์ด</span>
           </a>
         </li>
         <li class="section-title">จัดการข้อมูล</li>
         <li class="{{ request()->routeIs('users','addusers','edituser') ? 'active' : '' }}">
           <a class="sidenav-item-link" href="{{ route('users') }}">
             <i class="mdi mdi-account-group"></i>
-            <span class="nav-text">ผู้ใช้งาน</span>
+            <span class="nav-text">จัดการสมาชิก</span>
           </a>
         </li>
         <li class="{{ request()->routeIs('pet-reports') ? 'active' : '' }}">

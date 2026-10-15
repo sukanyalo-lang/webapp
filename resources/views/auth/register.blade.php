@@ -1,35 +1,17 @@
-@extends('template.frontend.master') {{-- ครอบ Classimax --}}
+@extends('template.frontend.master')
 @section('content')
-{{-- ฟอร์มสมัคร Classimax --}}
-<section class="login py-5 border-top-1">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-5 col-md-8 align-item-center">
-        <div class="border border">
-          <h3 class="bg-gray p-4">สมัครสมาชิก Pet Finder</h3>
-          <form method="POST" action="{{ route('register') }}" id="registerForm">
-            @csrf {{-- กัน CSRF --}}
-            <fieldset class="p-4">
-              @if($errors->any())<div class="alert alert-danger"><ul class="mb-0">@foreach($errors->all() as $e)<li>{{ $e }}</li>@endforeach</ul></div>@endif
-              <input class="form-control mb-3" type="text" name="name" placeholder="ชื่อผู้ใช้งาน*" value="{{ old('name') }}" required autofocus autocomplete="name">
-              <input class="form-control mb-3" type="email" name="email" placeholder="อีเมล*" value="{{ old('email') }}" required autocomplete="email">
-              <input class="form-control mb-3" type="password" id="password" name="password" placeholder="รหัสผ่าน (อย่างน้อย 8 ตัว)*" required autocomplete="new-password">
-              <input class="form-control mb-3" type="password" id="password_confirmation" name="password_confirmation" placeholder="ยืนยันรหัสผ่าน*" required autocomplete="new-password">
-              <button type="submit" class="btn btn-primary font-weight-bold mt-3">สมัครสมาชิก</button>
-              <a class="mt-3 d-inline-block text-primary" href="{{ route('login') }}">มีบัญชีแล้ว? เข้าสู่ระบบ</a>
-            </fieldset>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="login py-5"><div class="container"><div class="row justify-content-center"><div class="col-lg-5 col-md-8"><div class="border">
+<h3>มาเป็นส่วนหนึ่งของ Pet Finder</h3>
+<form method="POST" action="{{ route('register') }}" id="registerForm">@csrf
+<fieldset class="p-4"><p class="pf-auth-intro">ทุกการช่วยเหลือมีความหมาย เริ่มต้นช่วยน้องๆ กลับบ้านไปด้วยกัน</p>
+@if($errors->any())<div class="alert alert-danger" role="alert"><ul class="mb-0">@foreach($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul></div>@endif
+<label for="register-name">ชื่อผู้ใช้งาน</label><input id="register-name" class="form-control mb-3" type="text" name="name" placeholder="ชื่อที่ต้องการให้แสดง" value="{{ old('name') }}" required autofocus autocomplete="name">
+<label for="register-email">อีเมล</label><input id="register-email" class="form-control mb-3" type="email" name="email" placeholder="example@email.com" value="{{ old('email') }}" required autocomplete="email">
+<label for="password">รหัสผ่าน</label><input class="form-control mb-3" type="password" id="password" name="password" placeholder="อย่างน้อย 8 ตัวอักษร" minlength="8" required autocomplete="new-password">
+<label for="password_confirmation">ยืนยันรหัสผ่าน</label><input class="form-control mb-3" type="password" id="password_confirmation" name="password_confirmation" placeholder="กรอกรหัสผ่านอีกครั้ง" minlength="8" required autocomplete="new-password">
+<button type="submit" class="btn btn-primary mt-2">สมัครสมาชิก</button><p class="small text-center mt-4 mb-0">มีบัญชีแล้ว? <a href="{{ route('login') }}">เข้าสู่ระบบ</a></p>
+</fieldset></form></div></div></div></div></section>
 <script>
-// เช็ครหัสตรงกันก่อนส่ง
-document.getElementById('registerForm').addEventListener('submit', function(e){
-  var p=document.getElementById('password').value, c=document.getElementById('password_confirmation').value;
-  if(p!==c){ e.preventDefault(); alert('รหัสผ่านทั้งสองช่องไม่ตรงกัน'); }
-});
+(function(){var form=document.getElementById('registerForm'),password=document.getElementById('password'),confirmation=document.getElementById('password_confirmation');function validate(){confirmation.setCustomValidity(password.value===confirmation.value?'':'รหัสผ่านทั้งสองช่องไม่ตรงกัน');}password.addEventListener('input',validate);confirmation.addEventListener('input',validate);form.addEventListener('submit',validate);})();
 </script>
 @endsection
-

@@ -1,38 +1,30 @@
-<!-- เมนู Classimax หน้าบ้าน -->
-<header>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <nav class="navbar navbar-expand-lg navbar-light navigation">
-          <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('asset/frontend/images/logo.png') }}" alt="Pet Finder">
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto main-nav">
-              <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('home') }}">หน้าแรก</a></li>
-              <li class="nav-item {{ request()->routeIs('pets') ? 'active' : '' }}"><a class="nav-link" href="{{ route('pets') }}">สัตว์หาย</a></li>
-              <li class="nav-item {{ request()->routeIs('report') ? 'active' : '' }}"><a class="nav-link" href="{{ route('report') }}">แจ้งสัตว์หาย</a></li>
-              <li class="nav-item {{ request()->routeIs('disease-stats') ? 'active' : '' }}"><a class="nav-link" href="{{ route('disease-stats') }}">สถิติโรคสัตว์</a></li>
-              <li class="nav-item {{ request()->routeIs('about') ? 'active' : '' }}"><a class="nav-link" href="{{ route('about') }}">เกี่ยวกับเรา</a></li>
-            </ul>
-            <ul class="navbar-nav ml-auto mt-10">
-              @guest
-                <li class="nav-item"><a class="nav-link login-button" href="{{ route('login') }}">เข้าสู่ระบบ</a></li>
-                <li class="nav-item"><a class="nav-link text-white add-button" href="{{ route('report') }}"><i class="fa fa-plus-circle"></i> แจ้งสัตว์หาย</a></li>
-              @else
-                <li class="nav-item"><a class="nav-link login-button" href="{{ route('my-reports') }}">ประกาศของฉัน</a></li>
-                <li class="nav-item"><a class="nav-link login-button" href="{{ route('dashboard') }}">หลังบ้าน</a></li>
-                <li class="nav-item">
-                  <form action="{{ route('logout') }}" method="POST" class="d-inline">@csrf<button type="submit" class="nav-link text-white add-button border-0"><i class="fa fa-sign-out"></i> ออก ({{ Auth::user()->name }})</button></form>
-                </li>
-              @endguest
-            </ul>
-          </div>
+<header class="pf-site-header">
+    <div class="pf-header-inner">
+        <a class="pf-brand" href="{{ route('home') }}"><i class="fa fa-paw" aria-hidden="true"></i><span>Pet
+                Finder</span></a>
+        <nav class="pf-nav" aria-label="เมนูหลัก">
+            <a class="{{ request()->routeIs('home') ? 'is-active' : '' }}" href="{{ route('home') }}"
+                @if (request()->routeIs('home')) aria-current="page" @endif>หน้าแรก</a>
+            <a class="{{ request()->routeIs('pets') ? 'is-active' : '' }}" href="{{ route('pets') }}"
+                @if (request()->routeIs('pets')) aria-current="page" @endif>ประกาศทั้งหมด</a>
+            <a class="{{ request()->routeIs('report') ? 'is-active' : '' }}" href="{{ route('report') }}"
+                @if (request()->routeIs('report')) aria-current="page" @endif>แจ้งสัตว์หาย</a>
+            <a class="{{ request()->routeIs('about') ? 'is-active' : '' }}" href="{{ route('about') }}"
+                @if (request()->routeIs('about')) aria-current="page" @endif>เกี่ยวกับเรา</a>
         </nav>
-      </div>
+        <div class="pf-header-actions">
+            <a class="pf-header-search" href="{{ request()->routeIs('home') ? '#search' : route('pets') }}"
+                aria-label="ค้นหาประกาศ"><i class="fa fa-search" aria-hidden="true"></i></a>
+            @guest
+                <a class="pf-login" href="{{ route('login') }}">เข้าสู่ระบบ</a>
+                <a class="pf-signup" href="{{ route('register') }}">สมัครสมาชิก</a>
+            @else
+                <a class="pf-login" href="{{ route('my-reports') }}">ประกาศของฉัน</a>
+                <a class="pf-signup" href="{{ route('dashboard') }}">บัญชีของฉัน</a>
+                <form class="pf-logout" action="{{ route('logout') }}" method="POST">@csrf<button type="submit"
+                        aria-label="ออกจากระบบ" title="ออกจากระบบ"><i class="fa fa-sign-out"
+                            aria-hidden="true"></i></button></form>
+            @endguest
+        </div>
     </div>
-  </div>
 </header>

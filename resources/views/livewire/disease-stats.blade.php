@@ -1,45 +1,19 @@
-<div>
-<div style="max-width:1150px;margin:0 auto;padding:0 5%;">
-<div style="padding:40px 0 16px;">
-<div style="font-size:12px;letter-spacing:2px;color:#89847D;">FSVO / SWITZERLAND · BLV API</div>
-<h1 style="font-weight:300;">สถิติโรคสัตว์สวิตเซอร์แลนด์</h1>
-<p style="color:#777168;font-size:14px;">พบ {{ number_format($total) }} รายการ ผลรวม {{ number_format($grandCount) }} ตัว · ดึงสดจาก data.blv.admin.ch (cache 6 ชม.)</p>
-</div>
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
-<input type="text" wire:model.debounce.500ms="search" placeholder="ค้นหา Rabies / Cattle / BE" style="flex:1;min-width:200px;padding:10px;border:1px solid #E1DED9;">
-<select wire:model="year" style="padding:10px;border:1px solid #E1DED9;"><option value="">ทุกปี</option>@foreach($years as $y)<option value="{{ $y }}">{{ $y }}</option>@endforeach</select>
-<select wire:model="canton" style="padding:10px;border:1px solid #E1DED9;"><option value="">ทุก Canton</option>@foreach($cantons as $c)<option value="{{ $c }}">{{ $c }}</option>@endforeach</select>
-<select wire:model="group" style="padding:10px;border:1px solid #E1DED9;max-width:230px;"><option value="">ทุกกลุ่มโรค</option>@foreach($groups as $g)<option value="{{ $g }}">{{ $g }}</option>@endforeach</select>
-<button wire:click="clearFilters" style="padding:0 16px;border:1px solid #45423D;background:#fff;cursor:pointer;">ล้าง</button>
-</div>
-@if($rows->count())
-<div style="overflow-x:auto;border:1px solid #EAE8E4;">
-<table style="width:100%;border-collapse:collapse;font-size:13px;">
-<thead><tr style="background:#F7F5F1;text-align:left;">
-<th style="padding:9px;">Year</th><th style="padding:9px;">Canton</th><th style="padding:9px;">Group</th><th style="padding:9px;">Disease</th><th style="padding:9px;">Species</th><th style="padding:9px;text-align:right;">Count</th>
-</tr></thead>
-<tbody>
-@foreach($rows as $r)
-<tr style="border-top:1px solid #EAE8E4;">
-<td style="padding:8px;">{{ $r['year'] ?? '' }}</td>
-<td style="padding:8px;">{{ $r['canton'] ?? '' }}</td>
-<td style="padding:8px;">{{ $r['diseases_group'] ?? '' }}</td>
-<td style="padding:8px;">{{ $r['diseases'] ?? '' }}</td>
-<td style="padding:8px;">{{ $r['species'] ?? '' }}</td>
-<td style="padding:8px;text-align:right;">{{ number_format($r['count'] ?? 0) }}</td>
-</tr>
-@endforeach
-</tbody>
-</table>
-</div>
-<div style="display:flex;gap:8px;align-items:center;margin:12px 0 30px;font-size:13px;">
-<button wire:click="prevPage" @if($page<=1) disabled @endif style="padding:8px 16px;border:1px solid #45423D;background:#fff;cursor:pointer;">← ก่อนหน้า</button>
-<span>หน้า {{ $page }} / {{ $lastPage }}</span>
-<button wire:click="nextPage" @if($page>=$lastPage) disabled @endif style="padding:8px 16px;border:1px solid #45423D;background:#fff;cursor:pointer;">ถัดไป →</button>
-</div>
-@else
-<p style="color:#A33B32;">ไม่มีข้อมูล หรือดึงจาก BLV ไม่สำเร็จ (เช็คเน็ต / cache)</p>
-@endif
-<p style="font-size:12px;color:#89847D;margin-bottom:40px;">ที่มา: FSVO Switzerland via BlvAnimalHealthService · cache 6 ชม. · descriptor.json → CSV</p>
-</div>
+<div class="pf-disease">
+    <div class="pf-disease-summary"><span class="badge badge-primary">FSVO · Switzerland</span><h3 class="mt-3">ข้อมูลสุขภาพสัตว์</h3><p>พบ {{ number_format($total) }} รายการ · จำนวนสัตว์รวม {{ number_format($grandCount) }} ตัว</p></div>
+    <div class="pf-disease-filters">
+        <label>ค้นหา<input class="form-control" type="text" wire:model.debounce.500ms="search" placeholder="ชื่อโรค ชนิดสัตว์ หรือพื้นที่"></label>
+        <label>ปี<select class="form-control ignore" wire:model="year"><option value="">ทุกปี</option>@foreach($years as $y)<option value="{{ $y }}">{{ $y }}</option>@endforeach</select></label>
+        <label>พื้นที่<select class="form-control ignore" wire:model="canton"><option value="">ทุก Canton</option>@foreach($cantons as $c)<option value="{{ $c }}">{{ $c }}</option>@endforeach</select></label>
+        <label>กลุ่มโรค<select class="form-control ignore" wire:model="group"><option value="">ทุกกลุ่มโรค</option>@foreach($groups as $g)<option value="{{ $g }}">{{ $g }}</option>@endforeach</select></label>
+        <button class="btn btn-light" type="button" wire:click="clearFilters">ล้างตัวกรอง</button>
+    </div>
+    <div wire:loading class="small text-primary mb-3" role="status">กำลังโหลดข้อมูล...</div>
+    <div class="table-responsive"><table class="table table-hover"><thead><tr><th>ปี</th><th>พื้นที่</th><th>กลุ่มโรค</th><th>โรค</th><th>ชนิดสัตว์</th><th class="text-right">จำนวน</th></tr></thead><tbody>
+    @forelse($rows as $r)
+    <tr><td>{{ $r['year'] ?? '' }}</td><td>{{ $r['canton'] ?? '' }}</td><td>{{ $r['diseases_group'] ?? '' }}</td><td>{{ $r['diseases'] ?? '' }}</td><td>{{ $r['species'] ?? '' }}</td><td class="text-right">{{ number_format($r['count'] ?? 0) }}</td></tr>
+    @empty
+    <tr><td colspan="6" class="text-center py-5 text-muted">ไม่พบข้อมูล ลองเปลี่ยนตัวกรองหรือกลับมาดูอีกครั้ง</td></tr>
+    @endforelse
+    </tbody></table></div>
+    <div class="d-flex flex-wrap justify-content-between align-items-center mt-3" style="gap:12px"><p class="small mb-0">ที่มา: FSVO Switzerland · อัปเดตข้อมูลทุก 6 ชั่วโมง</p><div class="d-flex align-items-center" style="gap:12px"><button class="btn btn-sm btn-light" type="button" wire:click="prevPage" @disabled($page <= 1)>← ก่อนหน้า</button><span class="small">หน้า {{ $page }} / {{ $lastPage }}</span><button class="btn btn-sm btn-light" type="button" wire:click="nextPage" @disabled($page >= $lastPage)>ถัดไป →</button></div></div>
 </div>

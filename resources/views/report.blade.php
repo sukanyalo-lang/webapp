@@ -5,7 +5,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-9">
                     <div class="border-0 p-4 p-md-5" style="border-radius:20px;box-shadow:0 12px 40px rgba(20,50,30,.09)">
-                        <span class="text-uppercase text-muted small">Create a report</span>
+                        <span class="text-uppercase text-muted small">Pet Finder · พาน้องกลับบ้าน</span>
                         <h2 class="font-weight-bold mt-2">ลงประกาศสัตว์หาย / พบสัตว์</h2>
                         <p class="text-muted">กรอกข้อมูลให้ครบเพื่อช่วยให้ชุมชนสังเกตและติดต่อกลับได้ง่ายขึ้น</p>
                         @if (!auth()->check())
@@ -24,13 +24,13 @@
                             <form action="{{ route('report.store') }}" method="POST" enctype="multipart/form-data">@csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-6"><label>ประเภทประกาศ *</label><select name="status"
-                                            class="form-control" required>
-                                            <option value="lost" @selected(old('status') === 'lost')>สัตว์เลี้ยงหาย</option>
-                                            <option value="found" @selected(old('status') === 'found')>พบสัตว์ / ตามหาเจ้าของ
+                                            class="form-control ignore" required>
+                                            <option value="lost" @selected(old('status', request('status', 'lost')) === 'lost')>สัตว์เลี้ยงหาย</option>
+                                            <option value="found" @selected(old('status', request('status', 'lost')) === 'found')>พบสัตว์ / ตามหาเจ้าของ
                                             </option>
                                         </select></div>
                                     <div class="form-group col-md-6"><label>ประเภทสัตว์ *</label><select name="pet_type"
-                                            class="form-control" required>
+                                            class="form-control ignore" required>
                                             @foreach (['แมว', 'สุนัข', 'นก', 'กระต่าย', 'อื่นๆ'] as $type)
                                                 <option value="{{ $type }}" @selected(old('pet_type') === $type)>
                                                     {{ $type }}</option>
@@ -53,16 +53,16 @@
                                             max="{{ now()->toDateString() }}" class="form-control"></div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-4"><label>จังหวัด (ดึงจาก API)</label><select
-                                            id="province" class="form-control">
-                                            <option value="">กำลังโหลดจังหวัดจาก API...</option>
+                                    <div class="form-group col-md-4"><label>จังหวัด</label><select id="province"
+                                            class="form-control ignore">
+                                            <option value="">กำลังโหลดจังหวัด...</option>
                                         </select></div>
-                                    <div class="form-group col-md-4"><label>อำเภอ (ดึงจาก API)</label><select id="amphure"
-                                            class="form-control">
+                                    <div class="form-group col-md-4"><label>อำเภอ</label><select id="amphure"
+                                            class="form-control ignore">
                                             <option value="">เลือกจังหวัดก่อน</option>
                                         </select></div>
                                     <div class="form-group col-md-4"><label>ตำบล</label><select id="tambon"
-                                            class="form-control">
+                                            class="form-control ignore">
                                             <option value="">เลือกอำเภอก่อน</option>
                                         </select></div>
                                 </div>
@@ -71,8 +71,8 @@
                                 <div class="form-group"><label>สถานที่หาย / พบสัตว์ *</label><input name="location"
                                         id="location" value="{{ old('location') }}" class="form-control" required
                                         placeholder="เลือกจังหวัด/อำเภอ/ตำบล ด้านบน หรือพิมพ์เอง"><small
-                                        class="form-text text-muted">ดึงจังหวัด/อำเภอ/ตำบลสดจาก Thai-Province API (kongvut)
-                                        — ถ้าโหลดไม่สำเร็จให้พิมพ์เองได้</small></div>
+                                        class="form-text text-muted">เลือกพื้นที่เพื่อระบุสถานที่
+                                        หากโหลดไม่สำเร็จ สามารถพิมพ์สถานที่เองได้</small></div>
                                 <script>
                                     // โหลดจังหวัด/อำเภอ/ตำบลจาก JSON ฟรี (API ภายนอกที่เคยหายไป เอากลับมาแสดง)
                                     (function() {

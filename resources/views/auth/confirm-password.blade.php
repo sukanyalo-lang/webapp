@@ -3,6 +3,7 @@
         <x-slot name="logo">
             <x-authentication-card-logo />
         </x-slot>
+        <h2 class="pf-auth-heading">ยืนยันรหัสผ่าน</h2>
 
         <div class="mb-4 text-sm text-gray-600">
             {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
@@ -26,3 +27,4 @@
         </form>
     </x-authentication-card>
 </x-guest-layout>
+

@@ -1,0 +1,806 @@
+﻿* {
+    box-sizing: border-box
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    margin: 0;
+    background: #e9f6fc;
+    color: #153b60;
+    font: 14px 'Noto Sans Thai', Tahoma, sans-serif
+}
+
+a {
+    color: inherit;
+    text-decoration: none
+}
+
+button,
+input,
+select {
+    font: inherit
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid #79c6ff;
+    outline-offset: 3px
+}
+
+.page {
+    max-width: 1240px;
+    margin: 20px auto;
+    background: linear-gradient(145deg, #fff 62%, #f7fcff);
+    border: 1px solid #d9edf7;
+    border-radius: 14px;
+    box-shadow: 0 5px 30px #427d9c12;
+    overflow: hidden
+}
+
+.header {
+    height: 76px;
+    padding: 0 34px;
+    display: flex;
+    align-items: center;
+    gap: 42px
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #006bf1;
+    font-size: 26px;
+    font-weight: 800;
+    white-space: nowrap
+}
+
+.brand i {
+    font-size: 39px
+}
+
+.header nav {
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    gap: 30px
+}
+
+.header nav a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    position: relative;
+    white-space: nowrap
+}
+
+.header nav .active:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #97ceff
+}
+
+.header nav a:hover {
+    color: #007aff
+}
+
+.account {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 600
+}
+
+.search-link {
+    color: #1466bf;
+    padding: 8px
+}
+
+.login,
+.register {
+    padding: 9px 18px;
+    border-radius: 30px
+}
+
+.login {
+    background: #eaf5ff;
+    color: #0864cd
+}
+
+.register {
+    background: #0083ff;
+    color: white
+}
+
+main {
+    padding: 0 6px 34px
+}
+
+.hero {
+    aspect-ratio: 2.51;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #d9f2ff
+}
+
+.hero-art {
+    position: absolute;
+    inset: 0;
+    overflow: hidden
+}
+
+.hero-art img {
+    position: absolute;
+    width: 273%;
+    max-width: none;
+    height: auto;
+    left: -2.5%;
+    top: -19.6%
+}
+
+.hero-wash {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #dff4ff 0%, #dff4ff 43%, #dff4fff5 49%, #dff4ff00 66%)
+}
+
+.hero-content {
+    position: relative;
+    padding: 7% 0 0 7%;
+    z-index: 1
+}
+
+.hero h1 {
+    font-size: clamp(28px, 3.4vw, 43px);
+    line-height: 1.45;
+    font-weight: 800;
+    margin: 0 0 17px;
+    letter-spacing: -1px
+}
+
+.hero h1 span {
+    color: #006bea
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.9;
+    margin: 0 0 26px
+}
+
+.hero-actions {
+    display: flex;
+    gap: 24px
+}
+
+.button {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    min-height: 49px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .18s
+}
+
+.primary {
+    background: linear-gradient(120deg, #0096ff, #0078ff);
+    color: #fff;
+    box-shadow: 0 5px 12px #0084ff13
+}
+
+.primary:hover {
+    background: #006de6;
+    transform: translateY(-1px)
+}
+
+.outline {
+    background: #ffffffd9;
+    border-color: #007aff;
+    color: #0753a2
+}
+
+.outline:hover {
+    background: #fff
+}
+
+.hero-actions .button {
+    min-width: 202px;
+    font-size: 18px
+}
+
+.paw {
+    position: absolute;
+    color: #8bd6ff;
+    font-size: 41px;
+    transform: rotate(-20deg)
+}
+
+.one {
+    left: 12px;
+    top: 43px
+}
+
+.two {
+    left: 56%;
+    top: 36px
+}
+
+.search-bar {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 2.6fr 1fr 1fr 1fr 1fr;
+    gap: 12px;
+    align-items: center;
+    background: #fff;
+    margin: -42px 46px 0;
+    padding: 20px;
+    border: 1px solid #e1f0fb;
+    border-radius: 16px;
+    box-shadow: 0 7px 16px #348ac823
+}
+
+.search-bar input,
+.search-bar select {
+    border: 1px solid #d6e7f6;
+    border-radius: 9px;
+    min-width: 0;
+    width: 100%;
+    height: 46px;
+    color: #35577d;
+    background: #fbfdff;
+    padding: 0 12px;
+    font-size: 13px
+}
+
+.keyword {
+    position: relative;
+    min-width: 0
+}
+
+.keyword i {
+    position: absolute;
+    left: 15px;
+    top: 16px;
+    color: #4082c6
+}
+
+.keyword input {
+    padding-left: 40px
+}
+
+.keyword input::placeholder {
+    color: #7e9ab7
+}
+
+.search-bar .button {
+    min-height: 46px;
+    padding: 10px 20px
+}
+
+.latest {
+    padding: 34px 34px 4px
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px
+}
+
+.section-heading h2 {
+    font-size: 27px;
+    line-height: 1.4;
+    font-weight: 800;
+    margin: 0;
+    color: #163455
+}
+
+.section-heading>a {
+    color: #0077ef;
+    font-size: 13px
+}
+
+.pet-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 26px
+}
+
+.pet-card {
+    border: 1px solid #e4eff8;
+    background: #fff;
+    border-radius: 11px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px #4c8ab80d;
+    transition: .2s
+}
+
+.pet-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px #4c8ab822
+}
+
+.pet-photo {
+    position: relative;
+    aspect-ratio: 1.43;
+    background: #eaf5fb;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.pet-photo img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    object-fit: cover
+}
+
+.pet-photo img[hidden] {
+    display: none
+}
+
+.placeholder-paw {
+    font-size: 52px;
+    color: #a6d3ee
+}
+
+.image-unavailable:before {
+    content: 'ไม่มีรูปภาพ';
+    color: #7395b0
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    padding: 5px 12px;
+    color: white;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 700;
+    border-radius: 0 7px 7px 0
+}
+
+.lost {
+    background: #ff4549
+}
+
+.found {
+    background: #158c53
+}
+
+.pet-info {
+    padding: 16px 16px 18px
+}
+
+.pet-info h3 {
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 0 13px
+}
+
+.pet-info h3 a:hover {
+    color: #007aff
+}
+
+.pet-info p {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 12px;
+    color: #6d8bad;
+    margin: 9px 0 0
+}
+
+.pet-info p span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.pet-info p i {
+    width: 14px;
+    color: #4e86bc;
+    font-size: 15px;
+    text-align: center
+}
+
+.empty {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 35px;
+    border: 1px dashed #bddcf0;
+    border-radius: 12px;
+    background: #f7fcff
+}
+
+.empty>i {
+    font-size: 40px;
+    color: #90c9ef
+}
+
+.empty p {
+    color: #7692ad
+}
+
+@media(max-width:1100px) {
+    .page {
+        margin: 14px
+    }
+
+    .header {
+        padding: 0 25px;
+        gap: 24px
+    }
+
+    .brand {
+        font-size: 23px
+    }
+
+    .header nav {
+        gap: 20px
+    }
+
+    .account {
+        gap: 5px
+    }
+
+    .login,
+    .register {
+        padding: 8px 12px
+    }
+
+    .hero h1 {
+        font-size: 34px
+    }
+
+    .hero p {
+        font-size: 14px
+    }
+
+    .hero-actions .button {
+        min-width: 165px;
+        font-size: 15px
+    }
+
+    .search-bar {
+        margin-left: 30px;
+        margin-right: 30px;
+        padding: 16px;
+        gap: 9px
+    }
+
+    .pet-grid {
+        gap: 20px
+    }
+
+    .latest {
+        padding-left: 25px;
+        padding-right: 25px
+    }
+}
+
+@media(max-width:780px) {
+    .header {
+        height: auto;
+        min-height: 65px;
+        flex-wrap: wrap;
+        padding: 15px 20px;
+        gap: 12px
+    }
+
+    .brand {
+        font-size: 21px
+    }
+
+    .brand i {
+        font-size: 30px
+    }
+
+    .header nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 30px;
+        padding-top: 8px
+    }
+
+    .header nav a {
+        padding: 8px 0;
+        font-size: 11px
+    }
+
+    .account {
+        font-size: 10px
+    }
+
+    .search-link {
+        display: none
+    }
+
+    .hero {
+        min-height: 340px
+    }
+
+    .hero-content {
+        padding: 48px 0 0 35px
+    }
+
+    .hero h1 {
+        font-size: 28px
+    }
+
+    .hero p {
+        font-size: 12px
+    }
+
+    .hero-actions {
+        gap: 12px
+    }
+
+    .hero-actions .button {
+        min-width: 135px;
+        min-height: 42px;
+        padding: 9px 20px;
+        font-size: 13px
+    }
+
+    .search-bar {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin: -20px 20px 0;
+        padding: 14px
+    }
+
+    .keyword {
+        grid-column: span 2
+    }
+
+    .search-bar .button {
+        grid-column: span 2
+    }
+
+    .latest {
+        padding: 28px 20px 0
+    }
+
+    .section-heading h2 {
+        font-size: 23px
+    }
+
+    .pet-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px
+    }
+
+    .paw {
+        font-size: 27px
+    }
+
+    .one {
+        top: 15px
+    }
+}
+
+@media(max-width:480px) {
+    .page {
+        margin: 8px;
+        border-radius: 10px
+    }
+
+    .header {
+        padding: 12px;
+        gap: 8px
+    }
+
+    .brand {
+        font-size: 19px;
+        gap: 5px
+    }
+
+    .brand i {
+        font-size: 27px
+    }
+
+    .login,
+    .register {
+        padding: 7px 10px
+    }
+
+    .header nav {
+        gap: 21px
+    }
+
+    .hero {
+        min-height: 330px
+    }
+
+    .hero-art img {
+        width: 500%;
+        left: -105%;
+        top: -16%
+    }
+
+    .hero-wash {
+        background: linear-gradient(90deg, #dff4fff5, #dff4ffdd 43%, #dff4ff20 90%)
+    }
+
+    .hero-content {
+        padding: 50px 18px 0
+    }
+
+    .hero h1 {
+        font-size: 25px
+    }
+
+    .hero p {
+        font-size: 11px;
+        max-width: 250px
+    }
+
+    .hero-actions .button {
+        min-width: 115px;
+        font-size: 12px;
+        padding: 10px 13px
+    }
+
+    .hero-actions {
+        gap: 10px
+    }
+
+    .search-bar {
+        margin-left: 10px;
+        margin-right: 10px;
+        gap: 8px;
+        padding: 10px
+    }
+
+    .search-bar input,
+    .search-bar select {
+        font-size: 11px;
+        padding-right: 5px
+    }
+
+    .latest {
+        padding: 25px 12px 0
+    }
+
+    .section-heading {
+        margin-bottom: 16px
+    }
+
+    .section-heading h2 {
+        font-size: 21px
+    }
+
+    .pet-grid {
+        gap: 12px
+    }
+
+    .pet-info {
+        padding: 12px 10px
+    }
+
+    .pet-info h3 {
+        font-size: 12px
+    }
+
+    .pet-info p {
+        font-size: 10px;
+        gap: 6px
+    }
+
+    .badge {
+        font-size: 10px;
+        padding: 4px 8px
+    }
+}
+
+/* back.png includes the banner copy and paw decorations. */
+.hero-back {
+    aspect-ratio: 1976/796
+}
+
+.hero-back .hero-art img {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    object-fit: cover
+}
+
+.hero-back .hero-wash,
+.hero-back>.paw {
+    display: none
+}
+
+.hero-back .hero-content {
+    position: absolute;
+    left: 7%;
+    bottom: 14%;
+    padding: 0
+}
+
+.hero-back h1,
+.hero-back .hero-content>p {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap
+}
+
+@media(max-width:780px) {
+    .hero-back {
+        min-height: 0
+    }
+
+    .hero-back .hero-content {
+        bottom: 12%
+    }
+
+    .hero-back .hero-actions .button {
+        min-width: 120px;
+        min-height: 38px;
+        padding: 8px 15px;
+        font-size: 12px
+    }
+}
+
+@media(max-width:480px) {
+    .hero-back {
+        aspect-ratio: auto
+    }
+
+    .hero-back .hero-art {
+        position: relative;
+        aspect-ratio: 1976/796
+    }
+
+    .hero-back .hero-content {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        padding: 10px 18px 34px
+    }
+
+    .hero-back .hero-actions {
+        justify-content: center
+    }
+
+    .hero-back .hero-art img {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0
+    }
+}

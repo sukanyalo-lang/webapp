@@ -3,8 +3,9 @@
 <head>
   @include('template.backend.css') {{-- CSS Mono หลังบ้าน --}}
   @livewireStyles {{-- Livewire v2 CSS --}}
+  <x-theme-styles />
 </head>
-<body class="navbar-fixed sidebar-fixed" id="body">
+<body class="navbar-fixed sidebar-fixed pf-ui pf-admin" id="body">
   <div class="wrapper">
     @include('template.backend.sidebar') {{-- เมนูซ้าย Mono --}}
     <div class="page-wrapper">

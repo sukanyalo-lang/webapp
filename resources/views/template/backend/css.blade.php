@@ -11,11 +11,10 @@
 <link href="{{ asset('asset/backend/plugins/simplebar/simplebar.css') }}" rel="stylesheet" />
 <!-- ปลั๊กอินตาราง/ปฏิทิน/แจ้งเตือน -->
 <link href="{{ asset('asset/backend/plugins/nprogress/nprogress.css') }}" rel="stylesheet" />
-<link href="{{ asset('asset/backend/plugins/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css') }}" rel="stylesheet" />
+<link href="{{ asset('asset/backend/plugins/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css') }}"
+    rel="stylesheet" />
 <link href="{{ asset('asset/backend/plugins/jvectormap/jquery-jvectormap-2.0.3.css') }}" rel="stylesheet" />
 <link href="{{ asset('asset/backend/plugins/daterangepicker/daterangepicker.css') }}" rel="stylesheet" />
 <link href="{{ asset('asset/backend/plugins/toaster/toastr.min.css') }}" rel="stylesheet" />
 <!-- CSS หลัก Mono -->
 <link id="main-css-href" rel="stylesheet" href="{{ asset('asset/backend/css/style.css') }}" />
-
-  

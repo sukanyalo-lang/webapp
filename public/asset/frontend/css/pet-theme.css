@@ -1,0 +1,1077 @@
+﻿:root {
+    --pf-blue: #0783ff;
+    --pf-blue-dark: #0069dc;
+    --pf-ink: #173b60;
+    --pf-muted: #708aa5;
+    --pf-bg: #edf7fd;
+    --pf-border: #deedf8;
+    --pf-radius: 14px;
+    --pf-shadow: 0 5px 20px #387ca10b
+}
+
+body.pf-ui {
+    background: var(--pf-bg);
+    color: var(--pf-ink);
+    font-family: 'Noto Sans Thai', Tahoma, sans-serif;
+    font-size: 14px;
+    line-height: 1.75
+}
+
+.pf-ui h1,
+.pf-ui h2,
+.pf-ui h3,
+.pf-ui h4,
+.pf-ui h5,
+.pf-ui h6,
+.pf-ui input,
+.pf-ui select,
+.pf-ui textarea,
+.pf-ui button,
+.pf-ui .font-sans {
+    font-family: 'Noto Sans Thai', Tahoma, sans-serif
+}
+
+.pf-ui h1,
+.pf-ui h2,
+.pf-ui h3,
+.pf-ui h4,
+.pf-ui h5,
+.pf-ui h6 {
+    color: var(--pf-ink);
+    font-weight: 700;
+    line-height: 1.5
+}
+
+.pf-ui h1 {
+    font-size: 32px
+}
+
+.pf-ui h2 {
+    font-size: 26px
+}
+
+.pf-ui h3 {
+    font-size: 21px
+}
+
+.pf-ui h4 {
+    font-size: 18px
+}
+
+.pf-ui p {
+    color: var(--pf-muted);
+    font-family: inherit;
+    line-height: 1.85
+}
+
+.pf-ui .text-muted {
+    color: var(--pf-muted) !important
+}
+
+.pf-ui .text-primary {
+    color: var(--pf-blue) !important
+}
+
+.pf-ui .btn {
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    padding: 11px 22px;
+    box-shadow: none;
+    line-height: 1.5
+}
+
+.pf-ui .btn-sm {
+    padding: 6px 12px;
+    font-size: 12px
+}
+
+.pf-ui .btn-primary,
+.pf-ui .btn-info {
+    color: #fff;
+    background: var(--pf-blue);
+    border-color: var(--pf-blue)
+}
+
+.pf-ui .btn-primary:hover,
+.pf-ui .btn-info:hover {
+    background: var(--pf-blue-dark);
+    border-color: var(--pf-blue-dark)
+}
+
+.pf-ui .btn-outline-primary,
+.pf-ui .btn-outline-success {
+    background: #fff;
+    color: var(--pf-blue-dark);
+    border-color: #a9d4ff
+}
+
+.pf-ui .btn-outline-primary:hover,
+.pf-ui .btn-outline-success:hover {
+    background: #edf7ff;
+    border-color: var(--pf-blue)
+}
+
+.pf-ui .btn-secondary,
+.pf-ui .btn-light {
+    color: #4e7398;
+    background: #edf6fd;
+    border-color: var(--pf-border)
+}
+
+.pf-ui .btn-danger {
+    background: #ff515e;
+    border-color: #ff515e;
+    color: #fff
+}
+
+.pf-ui .btn-warning {
+    background: #eaf4ff;
+    color: #0873dd;
+    border-color: #d7eaff
+}
+
+.pf-ui .btn-success {
+    background: #23ae82;
+    border-color: #23ae82;
+    color: white
+}
+
+.pf-ui label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #365775
+}
+
+.pf-ui .form-control {
+    min-height: 44px;
+    height: auto;
+    border: 1px solid #dbeaf7;
+    border-radius: 8px;
+    background: #fcfeff;
+    color: var(--pf-ink);
+    font-size: 13px;
+    padding: 10px 13px;
+    box-shadow: none
+}
+
+.pf-ui select.form-control {
+    height: 44px;
+    padding-top: 7px;
+    padding-bottom: 7px
+}
+
+.pf-ui .form-control::placeholder {
+    color: #90a7bd
+}
+
+.pf-ui .form-control:focus {
+    border-color: #6bb9ff;
+    box-shadow: 0 0 0 3px #0783ff12;
+    background: #fff
+}
+
+.pf-ui input[type=checkbox],
+.pf-ui input[type=radio] {
+    accent-color: var(--pf-blue)
+}
+
+.pf-ui input[type=file] {
+    max-width: 100%;
+    font-size: 13px;
+    color: #6c8aa6
+}
+
+.pf-ui input[type=file]::file-selector-button {
+    border: 1px solid #cfe6f9;
+    border-radius: 8px;
+    padding: 9px 12px;
+    color: #076cd1;
+    background: #edf7ff;
+    margin-right: 12px
+}
+
+.pf-ui .card,
+.pf-ui .widget,
+.pf-ui .table-responsive {
+    border: 1px solid var(--pf-border);
+    border-radius: var(--pf-radius);
+    background: #fff;
+    box-shadow: var(--pf-shadow)
+}
+
+.pf-ui .card {
+    margin-bottom: 24px;
+    overflow: hidden
+}
+
+.pf-ui .card-header,
+.pf-ui .card-footer {
+    background: #fff;
+    border-color: var(--pf-border);
+    padding: 20px 24px
+}
+
+.pf-ui .card-body {
+    padding: 24px
+}
+
+.pf-ui .card-header h2 {
+    font-size: 23px;
+    margin-bottom: 4px
+}
+
+.pf-ui .card-header h5 {
+    font-size: 16px
+}
+
+.pf-ui .card-footer {
+    background: #f8fcff
+}
+
+.pf-ui .card-footer .btn+.btn {
+    margin-left: 8px
+}
+
+.pf-ui .table {
+    color: #355775;
+    font-size: 13px;
+    margin: 0
+}
+
+.pf-ui .table td,
+.pf-ui .table th {
+    border-color: #eaf2f9;
+    padding: 14px 16px;
+    vertical-align: middle
+}
+
+.pf-ui .table thead th {
+    border-top: 0;
+    border-bottom: 1px solid var(--pf-border);
+    background: #f4f9ff;
+    color: #365d83;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap
+}
+
+.pf-ui .table-hover tbody tr:hover {
+    background: #f7fbff
+}
+
+.pf-ui .table-responsive {
+    overflow-x: auto
+}
+
+.pf-ui .badge {
+    border-radius: 20px;
+    font-weight: 500;
+    padding: 6px 10px
+}
+
+.pf-ui .badge-primary {
+    background: #e6f3ff;
+    color: #0875e2
+}
+
+.pf-ui .badge-success {
+    background: #e2f7ee;
+    color: #148861
+}
+
+.pf-ui .badge-danger {
+    background: #ffe9ec;
+    color: #e84254
+}
+
+.pf-ui .badge-secondary {
+    background: #edf2f6;
+    color: #71859a
+}
+
+.pf-ui .alert {
+    border-radius: 10px;
+    font-size: 13px;
+    border: 1px solid transparent
+}
+
+.pf-ui .alert-info {
+    background: #eaf6ff;
+    color: #2266a4;
+    border-color: #d7ecfc
+}
+
+.pf-ui .alert-success {
+    background: #eaf9f2;
+    color: #218364
+}
+
+.pf-ui .alert-danger {
+    background: #fff0f2;
+    color: #be3f51
+}
+
+.pf-ui .pagination .page-link {
+    border-radius: 7px;
+    margin: 0 3px;
+    border-color: var(--pf-border);
+    color: #4085c8
+}
+
+.pf-ui .page-item.active .page-link {
+    color: #fff;
+    background: var(--pf-blue);
+    border-color: var(--pf-blue)
+}
+
+.pf-ui :is(a, button, input, select, textarea):focus-visible {
+    outline: 3px solid #8dcaff;
+    outline-offset: 3px
+}
+
+.pf-ui button:disabled {
+    cursor: not-allowed;
+    opacity: .5
+}
+
+/* Public pages share the same white surface as the reference home. */
+.pf-public-shell {
+    max-width: 1240px;
+    min-height: calc(100vh - 40px);
+    margin: 20px auto;
+    border: 1px solid #dceef9;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 5px 28px #357d9d0c;
+    overflow: hidden
+}
+
+.pf-public-main {
+    min-height: 55vh
+}
+
+.pf-public-main>.section,
+.pf-public-main>.section-sm {
+    padding: 42px 0
+}
+
+.pf-public-main .container {
+    max-width: 1180px
+}
+
+.pf-ui .section-title {
+    margin-bottom: 30px
+}
+
+.pf-ui .section-title h2 {
+    margin-bottom: 8px
+}
+
+.pf-ui .section-title p {
+    margin-bottom: 0
+}
+
+.pf-public-main .border.p-4,
+.pf-public-main .border-0.p-4 {
+    background: #fff;
+    border: 1px solid var(--pf-border) !important;
+    border-radius: 14px;
+    box-shadow: var(--pf-shadow) !important
+}
+
+.pf-ui .bg-gray,
+.pf-ui .search-result {
+    background: #f2f8ff;
+    border-radius: 12px
+}
+
+.pf-ui .search-result {
+    padding: 28px
+}
+
+.pf-ui .widget-header {
+    border-color: var(--pf-border)
+}
+
+.pf-ui .pets-head {
+    background: linear-gradient(120deg, #edf8ff, #f9fdff);
+    padding: 36px 0
+}
+
+.pf-ui .pet-list-card {
+    border: 1px solid var(--pf-border);
+    border-radius: 12px;
+    box-shadow: var(--pf-shadow);
+    transition: transform .2s
+}
+
+.pf-ui .pet-list-card:hover {
+    transform: translateY(-4px)
+}
+
+.pf-ui .pet-list-image {
+    background: #eaf5fc;
+    color: #8bbfe5
+}
+
+.pf-ui .pet-list-body {
+    padding: 18px
+}
+
+.pf-ui .pet-status {
+    background: #ffebee;
+    color: #e94253
+}
+
+.pf-ui .pet-status.found {
+    background: #e2f8ed;
+    color: #16875f
+}
+
+.pf-ui .pet-list-body h4 {
+    font-size: 17px
+}
+
+.pf-ui .pf-filter {
+    background: #fff;
+    border: 1px solid var(--pf-border);
+    border-radius: 12px;
+    box-shadow: var(--pf-shadow)
+}
+
+.pf-status-tabs {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin: 0 0 24px
+}
+
+.pf-status-tabs a {
+    border: 1px solid #dcecf9;
+    border-radius: 24px;
+    background: #f7fbff;
+    padding: 8px 24px;
+    font-size: 13px;
+    color: #537497
+}
+
+.pf-status-tabs a.is-active {
+    background: var(--pf-blue);
+    color: #fff;
+    border-color: var(--pf-blue)
+}
+
+.pf-ui .pf-footer {
+    padding: 28px 34px;
+    border-top: 1px solid var(--pf-border);
+    background: #f9fcff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    flex-wrap: wrap
+}
+
+.pf-footer-brand {
+    font-weight: 800;
+    color: #087cf0 !important;
+    font-size: 20px
+}
+
+.pf-footer-brand i {
+    margin-right: 6px
+}
+
+.pf-footer p {
+    font-size: 12px;
+    margin: 6px 0 0
+}
+
+.pf-footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px
+}
+
+.pf-footer nav a {
+    font-size: 12px;
+    color: #6484a4
+}
+
+/* Authentication pages. */
+.pf-ui .login {
+    background: radial-gradient(ellipse at 50% 15%, #e7f5ff, transparent 65%)
+}
+
+.pf-ui .login .border {
+    border: 1px solid var(--pf-border) !important;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 10px 35px #2874a110;
+    overflow: hidden
+}
+
+.pf-ui .login h3 {
+    background: linear-gradient(120deg, #edf8ff, #fff);
+    font-size: 23px;
+    margin: 0;
+    padding: 30px 26px !important;
+    border-bottom: 1px solid var(--pf-border)
+}
+
+.pf-ui .login fieldset {
+    padding: 26px !important
+}
+
+.pf-ui .login fieldset>.btn {
+    width: 100%
+}
+
+.pf-ui .login fieldset>a {
+    font-size: 13px
+}
+
+.pf-ui .login label {
+    display: inline-block
+}
+
+.pf-ui .pf-auth-intro {
+    font-size: 13px;
+    color: var(--pf-muted);
+    margin-bottom: 22px
+}
+
+/* Admin keeps the existing responsive menu behaviour. */
+.pf-admin .wrapper,
+.pf-admin .page-wrapper,
+.pf-admin .content-wrapper {
+    background: #f5faff
+}
+
+.pf-admin .content {
+    padding: 30px
+}
+
+.pf-admin .content>.container-fluid {
+    padding: 0
+}
+
+.pf-admin .main-header {
+    box-shadow: none;
+    border-bottom: 1px solid var(--pf-border)
+}
+
+.pf-admin .main-header .navbar {
+    background: #fff;
+    border-color: var(--pf-border)
+}
+
+.pf-admin .navbar .page-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--pf-ink)
+}
+
+.pf-admin .navbar .sidebar-toggle {
+    color: #3181c9
+}
+
+.pf-admin .navbar .navbar-right .user-menu .dropdown-toggle {
+    color: #496b8d;
+    background: #fff
+}
+
+.pf-admin .left-sidebar {
+    background: linear-gradient(160deg, #1b4163, #183650);
+    border: 0
+}
+
+.pf-admin .left-sidebar:before {
+    background: transparent
+}
+
+.pf-admin .sidebar .app-brand {
+    background: #fff;
+    border-bottom: 1px solid var(--pf-border)
+}
+
+.pf-admin .sidebar .app-brand a {
+    color: #007aff;
+    display: flex;
+    align-items: center;
+    gap: 9px
+}
+
+.pf-admin .sidebar .app-brand .brand-name {
+    color: #007aff;
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: none;
+    margin: 0
+}
+
+.pf-admin .sidebar .app-brand .mdi {
+    color: #007aff;
+    font-size: 32px
+}
+
+.pf-admin .sidebar .sidebar-inner {
+    padding: 12px 10px
+}
+
+.pf-admin .sidebar .sidebar-inner>li>a {
+    padding: 13px 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #d7e7f5
+}
+
+.pf-admin .sidebar .sidebar-inner>li>a i {
+    color: #d2e8ff;
+    font-size: 20px
+}
+
+.pf-admin .sidebar .sidebar-inner>li.active>a,
+.pf-admin .sidebar .sidebar-inner>li>a:hover {
+    background: #087bed;
+    color: white
+}
+
+.pf-admin .sidebar .section-title {
+    font-size: 11px;
+    color: #7da7c9;
+    padding: 22px 15px 8px;
+    margin: 0
+}
+
+.pf-admin .sidebar .sidebar-inner>li.active>a:before {
+    display: none
+}
+
+.pf-admin .footer .copyright {
+    border-top: 1px solid var(--pf-border);
+    padding: 16px 30px
+}
+
+.pf-admin .footer p {
+    font-size: 12px;
+    margin: 0
+}
+
+.pf-admin .dropdown-menu {
+    border: 1px solid var(--pf-border);
+    border-radius: 10px;
+    box-shadow: var(--pf-shadow)
+}
+
+/* Jetstream profile, tokens, dialogs and security screens. */
+.pf-account .bg-gray-100,
+.pf-guest .bg-gray-100 {
+    background: var(--pf-bg)
+}
+
+.pf-account .bg-gray-50 {
+    background: #f8fcff
+}
+
+.pf-account .bg-white.shadow,
+.pf-account .bg-white.shadow-md,
+.pf-account .bg-white.shadow-sm,
+.pf-guest .pf-auth-card {
+    border: 1px solid var(--pf-border);
+    box-shadow: var(--pf-shadow)
+}
+
+.pf-account .text-gray-900,
+.pf-account .text-gray-800,
+.pf-guest .text-gray-900 {
+    color: var(--pf-ink)
+}
+
+.pf-account .text-gray-600,
+.pf-account .text-gray-500,
+.pf-guest .text-gray-600 {
+    color: var(--pf-muted)
+}
+
+.pf-account .rounded-lg,
+.pf-account .rounded-md,
+.pf-guest .rounded-lg {
+    border-radius: 12px
+}
+
+.pf-ui .pf-component-button {
+    background: var(--pf-blue);
+    border-color: var(--pf-blue);
+    color: #fff;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+    padding: 10px 20px
+}
+
+.pf-ui .pf-component-button:hover {
+    background: var(--pf-blue-dark)
+}
+
+.pf-ui .pf-component-secondary {
+    border: 1px solid #d4e8f8;
+    border-radius: 8px;
+    background: #fff;
+    color: #32669b;
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+    padding: 10px 20px
+}
+
+.pf-ui .pf-component-danger {
+    border-radius: 8px;
+    background: #f44f61;
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+    padding: 10px 20px
+}
+
+.pf-ui .pf-component-input {
+    border: 1px solid #d8e8f5;
+    border-radius: 8px;
+    background: #fcfeff;
+    color: var(--pf-ink);
+    font-size: 14px;
+    min-height: 43px
+}
+
+.pf-ui .pf-component-input:focus {
+    border-color: #73baff;
+    --tw-ring-color: #d2eaff
+}
+
+.pf-ui .pf-auth-screen {
+    min-height: calc(100vh - 77px);
+    background: radial-gradient(ellipse at 50% 20%, #dff2ff, transparent 65%);
+    padding: 48px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
+}
+
+.pf-ui .pf-auth-card {
+    width: 100%;
+    max-width: 460px;
+    padding: 30px;
+    background: white;
+    border-radius: 16px;
+    margin-top: 24px
+}
+
+.pf-auth-brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 27px;
+    font-weight: 800;
+    color: #007aff !important
+}
+
+.pf-auth-brand i {
+    font-size: 38px
+}
+
+.pf-profile-banner {
+    height: 130px;
+    background: linear-gradient(110deg, #e0f3ff, #f4fbff);
+    border-bottom: 1px solid #e5f0fa;
+    position: relative;
+    overflow: hidden
+}
+
+.pf-profile-banner:after {
+    content: '🐾';
+    position: absolute;
+    right: 7%;
+    top: 0;
+    font-size: 90px;
+    opacity: .15;
+    transform: rotate(-15deg)
+}
+
+@media(min-width:1200px) {
+    .pf-public-main .pet-columns {
+        flex: 0 0 25%;
+        max-width: 25%
+    }
+
+    .pf-admin .content {
+        padding: 34px
+    }
+}
+
+@media(max-width:780px) {
+    .pf-public-shell {
+        margin: 10px
+    }
+
+    .pf-public-main>.section,
+    .pf-public-main>.section-sm {
+        padding: 28px 0
+    }
+
+    .pf-ui h1 {
+        font-size: 27px
+    }
+
+    .pf-ui h2 {
+        font-size: 23px
+    }
+
+    .pf-ui .pf-footer {
+        padding: 24px
+    }
+
+    .pf-ui .card-body,
+    .pf-ui .card-header,
+    .pf-ui .card-footer {
+        padding: 18px
+    }
+
+    .pf-admin .content {
+        padding: 20px 12px
+    }
+
+    .pf-ui .pf-auth-screen {
+        padding: 28px 16px
+    }
+
+    .pf-ui .pf-auth-card {
+        padding: 24px
+    }
+
+    .pf-ui .table td,
+    .pf-ui .table th {
+        padding: 12px;
+        white-space: nowrap
+    }
+
+    .pf-ui .table td strong {
+        white-space: normal
+    }
+
+    .pf-header-actions .pf-logout {
+        display: inline-flex
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .pf-ui * {
+        scroll-behavior: auto !important;
+        transition: none !important
+    }
+}
+
+.pf-ui .pf-metric {
+    color: var(--pf-ink);
+    text-decoration: none;
+    transition: transform .2s
+}
+
+.pf-metric:hover {
+    transform: translateY(-3px)
+}
+
+.pf-metric-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #e7f3ff;
+    color: #087fff;
+    font-size: 26px;
+    margin-right: 16px
+}
+
+.pf-metric-icon.green {
+    background: #e0f8ee;
+    color: #17a875
+}
+
+.pf-metric-icon.red {
+    background: #ffedf0;
+    color: #fa4f63
+}
+
+.pf-metric p {
+    font-size: 12px
+}
+
+.pf-metric h3 {
+    font-size: 29px
+}
+
+.pf-metric small {
+    font-size: 12px;
+    font-weight: 400;
+    color: #6587a6
+}
+
+.pf-chart {
+    height: 245px;
+    display: flex;
+    gap: 18px;
+    align-items: stretch;
+    padding: 20px 5px 0;
+    background: repeating-linear-gradient(to top, transparent 0, transparent 44px, #eaf3fb 45px, transparent 46px)
+}
+
+.pf-chart-column {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #7596b4;
+    font-size: 11px
+}
+
+.pf-chart-column>span {
+    color: #3388d4;
+    font-weight: 600
+}
+
+.pf-chart-track {
+    flex: 1;
+    width: 100%;
+    max-width: 44px;
+    display: flex;
+    align-items: flex-end
+}
+
+.pf-chart-bar {
+    width: 100%;
+    background: linear-gradient(#0088ff, #bce6ff);
+    border-radius: 7px 7px 0 0;
+    min-height: 2px
+}
+
+.pf-ui .pf-recent-list {
+    padding: 8px 22px
+}
+
+.pf-recent-report {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 0;
+    border-bottom: 1px solid #edf4fa
+}
+
+.pf-recent-report:last-child {
+    border: 0
+}
+
+.pf-recent-photo {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eaf6ff;
+    color: #7bb8e4
+}
+
+.pf-recent-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.pf-recent-copy {
+    flex: 1;
+    min-width: 0
+}
+
+.pf-recent-copy strong {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
+    color: var(--pf-ink)
+}
+
+.pf-recent-copy small {
+    display: block;
+    font-size: 11px;
+    color: #89a1b8
+}
+
+.pf-disease-filters {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    background: #f6fbff;
+    border: 1px solid var(--pf-border);
+    padding: 20px;
+    border-radius: 12px;
+    margin: 22px 0
+}
+
+.pf-disease-filters label {
+    margin: 0;
+    flex: 1;
+    min-width: 130px
+}
+
+.pf-disease-filters label:first-child {
+    flex: 2
+}
+
+.pf-disease-filters .form-control {
+    margin-top: 7px
+}
+
+.pf-home .button.primary {
+    color: #fff
+}
+
+.pf-home .hero-back h1 {
+    position: absolute
+}
+
+.pf-home .hero-back .hero-content>p {
+    position: absolute
+}
+
+.pf-home .section-heading h2 {
+    font-weight: 800
+}
+
+.pf-ui .pf-auth-heading {
+    padding: 0 0 18px;
+    margin: 0 0 22px;
+    border-bottom: 1px solid var(--pf-border)
+}/* Keep public form selects native so dynamic location options and Livewire stay in sync. */
+.pf-home .pet-info h3{font-size:15px;font-weight:600;line-height:1.5}
+.pf-home .section-heading h2{font-size:27px}
+.pf-admin .wrapper,.pf-admin .page-wrapper{min-width:0;max-width:100%}
+@media(max-width:780px){.pf-home .section-heading h2{font-size:23px}.pf-admin .navbar .page-title{width:auto;max-width:none;flex:1;min-width:0;margin-left:0;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pf-admin .navbar .navbar-right{margin-left:0;flex-shrink:0}}
+@media(max-width:480px){.pf-home .pet-info h3{font-size:12px}.pf-home .section-heading h2{font-size:21px}.pf-admin .navbar .sidebar-toggle{padding-left:16px;padding-right:16px;min-width:48px}.pf-admin .navbar .navbar-right .nav-link{padding-left:10px;padding-right:10px}}
+.pf-public-shell{display:flex;flex-direction:column}.pf-public-main{flex:1}.pf-ui .pf-form-panel{border:1px solid var(--pf-border);border-radius:14px 14px 0 0;box-shadow:var(--pf-shadow)}.pf-ui .pf-form-actions{border:1px solid var(--pf-border);border-top:0;border-radius:0 0 14px 14px;box-shadow:none;background:#f8fcff}.pf-admin .content a.small{color:var(--pf-blue-dark)}.pf-public-main fieldset a,.pf-public-main .pf-auth-intro a{color:var(--pf-blue-dark)}
+.pf-ui .pf-form-panel:only-child{border-radius:14px}

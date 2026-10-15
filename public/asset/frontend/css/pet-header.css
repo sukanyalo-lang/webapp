@@ -1,0 +1,235 @@
+﻿.pf-site-header {
+    background: linear-gradient(110deg, #fff 65%, #f5fbff);
+    border-bottom: 1px solid #e8f3fc;
+    font-family: 'Noto Sans Thai', Tahoma, sans-serif;
+    color: #193b60
+}
+
+.pf-site-header * {
+    box-sizing: border-box
+}
+
+.pf-header-inner {
+    width: 100%;
+    max-width: 1240px;
+    min-height: 76px;
+    margin: 0 auto;
+    padding: 0 34px;
+    display: flex;
+    align-items: center;
+    gap: 42px
+}
+
+.pf-site-header a {
+    text-decoration: none;
+    transition: color .15s, background .15s
+}
+
+.pf-site-header .pf-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    color: #006bf1;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.2
+}
+
+.pf-brand .fa {
+    font-size: 39px
+}
+
+.pf-nav {
+    display: flex;
+    align-items: stretch;
+    gap: 30px;
+    align-self: stretch
+}
+
+.pf-nav a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    color: #193b60;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0
+}
+
+.pf-nav .is-active:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: #77bdff
+}
+
+.pf-nav a:hover,
+.pf-nav .is-active {
+    color: #006ff0
+}
+
+.pf-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    white-space: nowrap
+}
+
+.pf-header-actions a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5
+}
+
+.pf-header-search {
+    padding: 9px;
+    color: #1767bb
+}
+
+.pf-site-header .pf-login {
+    padding: 9px 18px;
+    border-radius: 30px;
+    background: #e8f4ff;
+    color: #0062ce
+}
+
+.pf-site-header .pf-signup {
+    padding: 9px 20px;
+    border-radius: 30px;
+    background: #0083ff;
+    color: #fff;
+    box-shadow: 0 3px 8px #0083ff15
+}
+
+.pf-site-header .pf-login:hover {
+    background: #d6ebff
+}
+
+.pf-site-header .pf-signup:hover {
+    background: #006ddd
+}
+
+.pf-logout {
+    margin: 0
+}
+
+.pf-logout button {
+    border: 0;
+    background: transparent;
+    color: #3678b8;
+    padding: 8px;
+    cursor: pointer
+}
+
+.pf-site-header a:focus-visible,
+.pf-site-header button:focus-visible {
+    outline: 3px solid #8dceff;
+    outline-offset: 4px
+}
+
+@media(max-width:1100px) {
+    .pf-header-inner {
+        padding: 0 25px;
+        gap: 24px
+    }
+
+    .pf-site-header .pf-brand {
+        font-size: 23px
+    }
+
+    .pf-nav {
+        gap: 20px
+    }
+
+    .pf-header-actions {
+        gap: 5px
+    }
+
+    .pf-site-header .pf-login,
+    .pf-site-header .pf-signup {
+        padding: 8px 12px
+    }
+}
+
+@media(max-width:780px) {
+    .pf-header-inner {
+        min-height: 65px;
+        flex-wrap: wrap;
+        padding: 15px 20px 0;
+        gap: 12px
+    }
+
+    .pf-site-header .pf-brand {
+        font-size: 21px
+    }
+
+    .pf-brand .fa {
+        font-size: 30px
+    }
+
+    .pf-nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 30px
+    }
+
+    .pf-nav a {
+        padding: 10px 0;
+        font-size: 11px
+    }
+
+    .pf-header-actions a {
+        font-size: 10px
+    }
+
+    .pf-header-search {
+        padding: 6px
+    }
+}
+
+@media(max-width:480px) {
+    .pf-header-inner {
+        padding: 12px 12px 0;
+        gap: 8px
+    }
+
+    .pf-site-header .pf-brand {
+        font-size: 19px;
+        gap: 5px
+    }
+
+    .pf-brand .fa {
+        font-size: 27px
+    }
+
+    .pf-site-header .pf-login,
+    .pf-site-header .pf-signup {
+        padding: 7px 10px
+    }
+
+    .pf-nav {
+        gap: 21px
+    }
+
+    .pf-header-actions {
+        gap: 4px
+    }
+
+    .pf-header-search {
+        padding: 4px
+    }
+
+    .pf-logout button {
+        padding: 4px
+    }
+}

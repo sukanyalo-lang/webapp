@@ -41,7 +41,7 @@
                                 <td>{{ $pet->location }}</td>
                                 <td>
                                     <form method="POST" action="{{ route('my-reports.status', $pet) }}">@csrf
-                                        @method('PATCH')<select name="status" class="form-control"
+                                        @method('PATCH')<select name="status" class="form-control ignore"
                                             onchange="this.form.submit()">
                                             <option value="lost" @selected($pet->status === 'lost')>สัตว์หาย</option>
                                             <option value="found" @selected($pet->status === 'found')>พบสัตว์</option>

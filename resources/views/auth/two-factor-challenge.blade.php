@@ -3,6 +3,7 @@
         <x-slot name="logo">
             <x-authentication-card-logo />
         </x-slot>
+        <h2 class="pf-auth-heading">ยืนยันตัวตนสองขั้นตอน</h2>
 
         <div x-data="{ recovery: false }">
             <div class="mb-4 text-sm text-gray-600" x-show="! recovery">
@@ -55,3 +56,4 @@
         </div>
     </x-authentication-card>
 </x-guest-layout>
+

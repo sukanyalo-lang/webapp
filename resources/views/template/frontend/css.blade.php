@@ -8,7 +8,6 @@
 <link href="{{ asset('asset/frontend/images/favicon.png') }}" rel="shortcut icon">
 <link href="{{ asset('asset/frontend/plugins/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('asset/frontend/plugins/bootstrap/bootstrap-slider.css') }}" rel="stylesheet">
-<link href="{{ asset('asset/frontend/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 <link href="{{ asset('asset/frontend/plugins/slick/slick.css') }}" rel="stylesheet">
 <link href="{{ asset('asset/frontend/plugins/slick/slick-theme.css') }}" rel="stylesheet">
 <link href="{{ asset('asset/frontend/plugins/jquery-nice-select/css/nice-select.css') }}" rel="stylesheet">

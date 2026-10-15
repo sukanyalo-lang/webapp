@@ -16,8 +16,9 @@
 
         <!-- Styles -->
         @livewireStyles
+        <x-theme-styles />
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased pf-ui pf-account">
         <x-banner />
 
         <div class="min-h-screen bg-gray-100">

@@ -54,11 +54,12 @@
             @if (session('success'))
                 <div class="alert alert-success">{{ session('success') }}</div>
             @endif
-            <form method="GET" action="{{ route('pets') }}" class="p-4 mb-4" style="background:#f7f9f7;border-radius:16px">
+            <form method="GET" action="{{ route('pets') }}" class="pf-filter p-4 mb-4">
                 <div class="form-row align-items-end">
                     <div class="form-group col-lg-4"><label>คำค้นหา</label><input class="form-control" name="q"
                             value="{{ request('q') }}" placeholder="ชื่อสัตว์ สี หรือลักษณะ"></div>
-                    <div class="form-group col-lg-2"><label>ประเภท</label><select class="form-control" name="type">
+                    <div class="form-group col-lg-2"><label>ประเภท</label><select class="form-control ignore"
+                            name="type">
                             <option value="">ทุกประเภท</option>
                             @foreach (['แมว', 'สุนัข', 'นก', 'กระต่าย', 'อื่นๆ'] as $type)
                                 <option value="{{ $type }}" @selected(request('type') === $type)>{{ $type }}
@@ -66,24 +67,31 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group col-lg-2"><label>ประเภทประกาศ</label><select class="form-control" name="status">
+                    <div class="form-group col-lg-2"><label>ประเภทประกาศ</label><select class="form-control ignore"
+                            name="status">
                             <option value="">ทั้งหมด</option>
                             <option value="lost" @selected(request('status') === 'lost')>สัตว์หาย</option>
                             <option value="found" @selected(request('status') === 'found')>พบสัตว์</option>
                         </select></div>
                     <div class="form-group col-lg-3"><label>จังหวัด / สถานที่</label><input class="form-control"
                             name="location" value="{{ request('location') }}" placeholder="เช่น สุรินทร์"></div>
-                    <div class="form-group col-lg-1"><button class="btn btn-primary btn-block" type="submit"><i
-                                class="fa fa-search"></i></button></div>
+                    <div class="form-group col-lg-1"><button class="btn btn-primary btn-block" type="submit"
+                            aria-label="ค้นหาประกาศ"><i class="fa fa-search"></i></button></div>
                 </div><a href="{{ route('pets') }}" class="small text-muted">ล้างตัวกรอง</a>
             </form>
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h3 class="font-weight-bold mb-0">{{ number_format($pets->total()) }} ประกาศ</h3><a
                     href="{{ route('report') }}" class="btn btn-outline-success">+ ลงประกาศ</a>
             </div>
+            <nav class="pf-status-tabs" aria-label="ประเภทประกาศ">
+                @foreach (['' => 'ทั้งหมด', 'lost' => 'สัตว์หาย', 'found' => 'พบแล้ว'] as $status => $label)
+                    <a class="{{ request('status', '') === $status ? 'is-active' : '' }}"
+                        href="{{ route('pets', array_merge(request()->except('page', 'status'), $status ? ['status' => $status] : [])) }}">{{ $label }}</a>
+                @endforeach
+            </nav>
             <div class="row">
                 @forelse($pets as $pet)
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="col-lg-4 col-md-6 mb-4 pet-columns">
                         <article class="pet-list-card">
                             <div class="pet-list-image">
                                 @if ($pet->photo_path)
@@ -104,7 +112,7 @@
                             </div>
                         </article>
                 </div>@empty<div class="col-12">
-                        <div class="text-center p-5"><i class="fa fa-search" style="font-size:2.4rem;color:#819888"></i>
+                        <div class="text-center p-5"><i class="fa fa-search" style="font-size:2.4rem;color:#7cabc9"></i>
                             <h4 class="mt-3">ไม่พบประกาศที่ตรงกับการค้นหา</h4>
                             <p class="text-muted">ลองเปลี่ยนคำค้นหาหรือเป็นคนแรกที่ลงประกาศ</p>
                         </div>

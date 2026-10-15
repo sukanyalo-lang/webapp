@@ -1,200 +1,41 @@
-@extends('template.frontend.master')
-@section('content')
-    <style>
-        .pf-hero {
-            background: linear-gradient(120deg, rgba(22, 43, 37, .93), rgba(43, 83, 69, .78)), url('{{ asset('asset/frontend/images/slider/slider-bg.jpg') }}') center/cover;
-            color: #fff;
-            padding: 86px 0 72px
-        }
-
-        .pf-hero h1 {
-            font-size: clamp(2.3rem, 5vw, 4.3rem);
-            font-weight: 800;
-            line-height: 1.12;
-            max-width: 760px;
-            margin: 0 auto 18px
-        }
-
-        .pf-hero p {
-            font-size: 1.1rem;
-            max-width: 650px;
-            margin: 0 auto 28px;
-            color: #e7f0eb
-        }
-
-        .pf-pill {
-            display: inline-block;
-            background: #e7f2e9;
-            color: #24513f;
-            border-radius: 999px;
-            padding: 7px 14px;
-            font-size: .82rem;
-            font-weight: 700;
-            margin-bottom: 18px
-        }
-
-        .pf-stat {
-            border: 1px solid #e7ece8;
-            border-radius: 18px;
-            padding: 22px;
-            background: #fff;
-            box-shadow: 0 12px 35px rgba(25, 55, 40, .06)
-        }
-
-        .pf-card {
-            height: 100%;
-            border: 1px solid #e7ece8;
-            border-radius: 18px;
-            overflow: hidden;
-            background: #fff;
-            transition: .2s;
-            box-shadow: 0 8px 24px rgba(25, 55, 40, .05)
-        }
-
-        .pf-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 34px rgba(25, 55, 40, .11)
-        }
-
-        .pf-card-img {
-            height: 190px;
-            background: #edf3ee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: #6c927b
-        }
-
-        .pf-card-body {
-            padding: 20px
-        }
-
-        .pf-chip {
-            font-size: .75rem;
-            font-weight: 700;
-            padding: 5px 10px;
-            border-radius: 999px;
-            background: #fff0e7;
-            color: #9b4b25
-        }
-
-        .pf-chip.found {
-            background: #e6f6eb;
-            color: #277446
-        }
-
-        .pf-muted {
-            color: #78857d;
-            font-size: .9rem
-        }
-
-        .pf-section-title {
-            font-weight: 800;
-            color: #20392e
-        }
-    </style>
-    <section class="pf-hero text-center">
-        <div class="container"><span class="pf-pill">ชุมชนช่วยกัน · พาเพื่อนตัวน้อยกลับบ้าน</span>
-            <h1>ทุกการพบเจอ<br>อาจเปลี่ยนชีวิตหนึ่งชีวิต</h1>
-            <p>พื้นที่กลางสำหรับแจ้งสัตว์เลี้ยงหาย แจ้งพบสัตว์ และช่วยส่งต่อข้อมูลให้ถึงเจ้าของอย่างรวดเร็ว</p>
-            <div class="d-flex flex-wrap justify-content-center" style="gap:12px"><a href="{{ route('pets') }}"
-                    class="btn btn-light btn-lg">ค้นหาประกาศ <i class="fa fa-search ml-1"></i></a><a
-                    href="{{ route('report') }}" class="btn btn-primary btn-lg">+ ลงประกาศฟรี</a></div>
-        </div>
-    </section>
-    <section class="section-sm">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md-4 mb-3">
-                    <div class="pf-stat">
-                        <div class="pf-muted">ประกาศสัตว์หาย</div>
-                        <div class="display-4 font-weight-bold" style="color:#bd5b45">{{ number_format($lostCount) }}</div>
-                        <div class="pf-muted">กำลังรอความช่วยเหลือ</div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="pf-stat">
-                        <div class="pf-muted">ประกาศพบสัตว์</div>
-                        <div class="display-4 font-weight-bold" style="color:#37835a">{{ number_format($foundCount) }}</div>
-                        <div class="pf-muted">รอตามหาเจ้าของ</div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="pf-stat">
-                        <div class="pf-muted">ร่วมเป็นส่วนหนึ่ง</div>
-                        <div class="h3 font-weight-bold mt-2">ช่วยแชร์ · ช่วยแจ้ง</div>
-                        <div class="pf-muted">ทุกเบาะแสมีความหมาย</div>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex flex-wrap align-items-end justify-content-between mb-4">
-                <div><span class="pf-muted text-uppercase">Community board</span>
-                    <h2 class="pf-section-title mb-1">ประกาศล่าสุด</h2>
-                    <p class="pf-muted mb-0">ข้อมูลจากฐานข้อมูลจริงของระบบ</p>
-                </div><a href="{{ route('pets') }}" class="btn btn-outline-success mt-3">ดูประกาศทั้งหมด <i
-                        class="fa fa-arrow-right ml-1"></i></a>
-            </div>
-            <div class="row">
-                @forelse($pets as $pet)
-                    <div class="col-lg-4 col-md-6 mb-4">
-
-                        <article class="pf-card">
-
-                            <div class="pf-card-img">
-                                @if ($pet->photo_path)
-                                    <img src="{{ asset('storage/' . $pet->photo_path) }}" alt="{{ $pet->pet_name }}"
-                                        style="width:100%; height:190px; object-fit:cover;"
-                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                    <div style="display:none; text-align:center; padding:30px;">
-                                        <i class="fa fa-paw" style="font-size:30px;"></i>
-                                        <p>โหลดรูปไม่สำเร็จ</p>
-                                    </div>
-                                @else
-                                    <div style="text-align:center; padding:30px;">
-                                        <i class="fa fa-paw" style="font-size:30px;"></i>
-                                        <p>ไม่มีข้อมูลรูปภาพ</p>
-                                    </div>
-                                @endif
-                            </div>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pet Finder | พาน้องกลับบ้าน</title>
+<link rel="stylesheet" href="{{ asset('asset/frontend/css/pet-home.css') }}">
+<x-theme-styles />
+</head>
+<body class="pf-ui pf-home"><div class="page">
+@include('template.frontend.header')
+<main>
+<section class="hero hero-back" aria-labelledby="hero-title">
+<div class="hero-art" aria-hidden="true"><img src="{{ asset('asset/frontend/images/back.png') }}" alt=""></div><div class="hero-wash"></div>
+<i class="fa fa-paw paw one" aria-hidden="true"></i><i class="fa fa-paw paw two" aria-hidden="true"></i>
+<div class="hero-content"><h1 id="hero-title"><span>เพราะทุกชีวิตมีค่า</span><br>เราจะพาน้องๆ กลับบ้าน</h1><p>เว็บไซต์สำหรับแจ้งสัตว์เลี้ยงหาย และแจ้งพบสัตว์เลี้ยง<br>ช่วยกันแชร์ ช่วยกันตามหา ให้พวกเขากลับบ้าน</p>
+<div class="hero-actions"><a class="button primary" href="{{ route('report', ['status' => 'lost']) }}">แจ้งสัตว์หาย</a><a class="button outline" href="{{ route('report', ['status' => 'found']) }}">แจ้งพบสัตว์</a></div></div>
+</section>
+<form id="search" class="search-bar" action="{{ route('pets') }}" method="GET" role="search">
+<label class="keyword"><i class="fa fa-search" aria-hidden="true"></i><input name="q" aria-label="คำค้นหา" placeholder="ค้นหาประกาศ (ชื่อสัตว์, สี, สายพันธุ์)"></label>
+<select name="location" aria-label="จังหวัด"><option value="">จังหวัด</option>@foreach(['กรุงเทพมหานคร','เชียงใหม่','ชลบุรี','นนทบุรี','ปทุมธานี','สมุทรปราการ','นครราชสีมา','ขอนแก่น','ภูเก็ต'] as $province)<option value="{{ $province }}">{{ $province }}</option>@endforeach</select>
+<select name="type" aria-label="ประเภทสัตว์"><option value="">ประเภทสัตว์</option>@foreach(['สุนัข','แมว','นก','กระต่าย','อื่นๆ'] as $type)<option value="{{ $type }}">{{ $type }}</option>@endforeach</select>
+<select name="status" aria-label="สถานะ"><option value="">สถานะ</option><option value="lost">สัตว์หาย</option><option value="found">พบแล้ว</option></select>
+<button class="button primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i> ค้นหา</button>
+</form>
+<section class="latest" aria-labelledby="latest-title"><div class="section-heading"><h2 id="latest-title">ประกาศล่าสุด</h2><a href="{{ route('pets') }}">ดูทั้งหมด →</a></div>
+<div class="pet-grid">
+@forelse($pets->take(4) as $pet)
+<article class="pet-card"><div class="pet-photo">
+@if($pet->photo_path)
+<img src="{{ asset('storage/' . $pet->photo_path) }}" alt="{{ $pet->pet_name }}" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.add('image-unavailable')">
+@else
+<i class="fa fa-paw placeholder-paw" aria-hidden="true"></i>
+@endif
+<span class="badge {{ $pet->status === 'found' ? 'found' : 'lost' }}">{{ $pet->status === 'found' ? 'พบแล้ว' : 'สัตว์หาย' }}</span>
+</div><div class="pet-info"><h3><a href="{{ route('pets', ['q' => $pet->pet_name]) }}">{{ $pet->pet_name }} {{ $pet->description }}</a></h3><p><i class="fa fa-map-marker" aria-hidden="true"></i><span>{{ $pet->location }}</span></p><p><i class="fa fa-calendar-o" aria-hidden="true"></i>{{ $pet->created_at->day }} {{ ['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'][$pet->created_at->month - 1] }} {{ $pet->created_at->year + 543 }}</p></div></article>
+@empty
+<div class="empty"><i class="fa fa-paw" aria-hidden="true"></i><h3>ยังไม่มีประกาศในขณะนี้</h3><p>ร่วมเป็นส่วนหนึ่งในการพาน้องกลับบ้าน</p><a class="button primary" href="{{ route('report') }}">แจ้งประกาศแรก</a></div>
+@endforelse
+</div></section></main></div></body></html>
 
 
-                            <div class="pf-card-body">
-                                <span class="pf-chip {{ $pet->status === 'found' ? 'found' : '' }}">
-                                    {{ $pet->status === 'found' ? 'พบสัตว์' : 'สัตว์หาย' }}
-                                </span>
-
-                                <h4 class="mt-3 mb-2 font-weight-bold">
-                                    {{ $pet->pet_name }}
-                                </h4>
-
-                                <p class="pf-muted mb-2">
-                                    <i class="fa fa-paw mr-2"></i>
-                                    {{ $pet->pet_type }}
-                                    {{ $pet->color ? '· ' . $pet->color : '' }}
-                                </p>
-
-                                <p class="pf-muted mb-3">
-                                    <i class="fa fa-map-marker mr-2"></i>
-                                    {{ $pet->location }}
-                                </p>
-
-                                <p class="mb-0">
-                                    {{ \Illuminate\Support\Str::limit($pet->description, 100) }}
-                                </p>
-                            </div>
-                        </article>
-
-                </div>@empty<div class="col-12">
-                        <div class="text-center p-5" style="background:#f5f8f5;border-radius:18px"><i class="fa fa-heart-o"
-                                style="font-size:2.5rem;color:#6c927b"></i>
-                            <h4 class="mt-3">ยังไม่มีประกาศในระบบ</h4>
-                            <p class="pf-muted">เป็นคนแรกที่ลงประกาศเพื่อเริ่มช่วยเหลือสัตว์เลี้ยง</p><a
-                                href="{{ route('report') }}" class="btn btn-primary">ลงประกาศแรก</a>
-                        </div>
-                    </div>
-                @endforelse
-            </div>
-        </div>
-    </section>
-@endsection
