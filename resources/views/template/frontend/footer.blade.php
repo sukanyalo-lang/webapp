@@ -22,6 +22,7 @@
         <div class="block">
           <h4>อื่นๆ</h4>
           <ul>
+            <li><a href="{{ route('disease-stats') }}">สถิติโรคสัตว์ (BLV API)</a></li>
             <li><a href="{{ route('about') }}">เกี่ยวกับเรา</a></li>
             <li><a href="{{ route('contact') }}">ติดต่อ</a></li>
             <li><a href="{{ route('login') }}">เข้าสู่ระบบ</a></li>

@@ -15,6 +15,7 @@
               <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('home') }}">หน้าแรก</a></li>
               <li class="nav-item {{ request()->routeIs('pets') ? 'active' : '' }}"><a class="nav-link" href="{{ route('pets') }}">สัตว์หาย</a></li>
               <li class="nav-item {{ request()->routeIs('report') ? 'active' : '' }}"><a class="nav-link" href="{{ route('report') }}">แจ้งสัตว์หาย</a></li>
+              <li class="nav-item {{ request()->routeIs('disease-stats') ? 'active' : '' }}"><a class="nav-link" href="{{ route('disease-stats') }}">สถิติโรคสัตว์</a></li>
               <li class="nav-item {{ request()->routeIs('about') ? 'active' : '' }}"><a class="nav-link" href="{{ route('about') }}">เกี่ยวกับเรา</a></li>
             </ul>
             <ul class="navbar-nav ml-auto mt-10">

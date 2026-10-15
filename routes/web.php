@@ -16,6 +16,7 @@ Route::get('/report', [PetReportController::class, 'create'])->name('report');
 Route::post('/report', [PetReportController::class, 'store'])->middleware('auth')->name('report.store');
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
+Route::view('/disease-stats', 'disease-stats')->name('disease-stats');
 
 Route::middleware(['auth', config('jetstream.auth_session')])->group(function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');

@@ -142,7 +142,7 @@
                         <article class="pf-card">
                             <div class="pf-card-img">
                                 @if ($pet->photo_path)
-                                    <img src="{{ asset('storage/pet-reports/' . $pet->photo_path) }}"
+                                    <img src="{{ asset('storage/' . $pet->photo_path) }}"
                                         alt="{{ $pet->pet_name }}" style="width:100%; height:190px; object-fit:cover;"
                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                                     <i class="fa fa-paw" style="display:none; font-size:30px;"></i>

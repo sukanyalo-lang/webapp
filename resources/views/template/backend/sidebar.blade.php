@@ -25,6 +25,9 @@
         <li class="{{ request()->routeIs('pet-reports') ? 'active' : '' }}">
           <a class="sidenav-item-link" href="{{ route('pet-reports') }}"><i class="mdi mdi-paw"></i><span class="nav-text">จัดการประกาศสัตว์เลี้ยง</span></a>
         </li>
+        <li class="{{ request()->routeIs('disease-stats') ? 'active' : '' }}">
+          <a class="sidenav-item-link" href="{{ route('disease-stats') }}" target="_blank"><i class="mdi mdi-chart-bar"></i><span class="nav-text">สถิติโรคสัตว์ (BLV API)</span></a>
+        </li>
         <li class="section-title">หน้าบ้าน</li>
         <li>
           <a class="sidenav-item-link" href="{{ route('home') }}" target="_blank">
