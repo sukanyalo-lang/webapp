@@ -1,4 +1,4 @@
 @extends('template.backend.master')
 @section('content')
-  @livewire('usertable')
+    @livewire('usertable')
 @endsection

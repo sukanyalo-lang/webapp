@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-   @include('template.frontend.css')
-   @livewireStyles
+  @include('template.frontend.css') {{-- CSS Classimax --}}
+  @livewireStyles {{-- Livewire CSS --}}
 </head>
-<body>
-    @include('template.frontend.header')
-    <div class="py-30"></div>
-@include('template.frontend.js')
-
-
-@yield('content')
-@include('template.frontend.footer')
-<div class="py-40"></div>
-    @livewireScripts
+<body class="body-wrapper">
+  @include('template.frontend.header') {{-- เมนู Classimax --}}
+  @yield('content') {{-- เนื้อหาหน้าบ้าน --}}
+  @include('template.frontend.footer') {{-- ท้าย Classimax --}}
+  @include('template.frontend.js') {{-- JS Classimax --}}
+  @livewireScripts {{-- Livewire JS --}}
 </body>
 </html>

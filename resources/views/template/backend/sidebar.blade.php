@@ -1,89 +1,38 @@
-<aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
-        <!--begin::Sidebar Brand-->
-        <div class="sidebar-brand">
-          <!--begin::Brand Link-->
-          <a href="./index.html" class="brand-link">
-            <!--begin::Brand Image-->
-            <img
-              src="./assets/img/AdminLTELogo.png"
-              alt="AdminLTE Logo"
-              class="brand-image opacity-75 shadow"
-            />
-            <!--end::Brand Image-->
-            <!--begin::Brand Text-->
-            <span class="brand-text fw-light">AdminLTE 4</span>
-            <!--end::Brand Text-->
+<!-- Mono sidebar (หลังบ้าน) -->
+<aside class="left-sidebar sidebar-dark" id="left-sidebar">
+  <div id="sidebar" class="sidebar sidebar-with-footer">
+    <div class="app-brand">
+      <a href="{{ route('dashboard') }}">
+        <img src="{{ asset('asset/backend/images/logo.png') }}" alt="Pet Finder">
+        <span class="brand-name">PET FINDER</span>
+      </a>
+    </div>
+    <div class="sidebar-left" data-simplebar style="height: 100%;">
+      <ul class="nav sidebar-inner" id="sidebar-menu">
+        <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+          <a class="sidenav-item-link" href="{{ route('dashboard') }}">
+            <i class="mdi mdi-view-dashboard-outline"></i>
+            <span class="nav-text">Dashboard</span>
           </a>
-          <!--end::Brand Link-->
-        </div>
-        <!--end::Sidebar Brand-->
-        <!--begin::Sidebar Search-->
-        <div class="sidebar-search" role="search">
-          <label for="sidebar-search-input" class="visually-hidden">Filter menu</label>
-          <input
-            type="search"
-            id="sidebar-search-input"
-            class="form-control form-control-sm"
-            placeholder="Filter menu…"
-            autocomplete="off"
-            data-lte-toggle="sidebar-search"
-            data-lte-target="#navigation"
-          />
-          <p class="fs-7 text-secondary mt-2 mb-0" data-lte-search-empty role="status" hidden>
-            No matching pages.
-          </p>
-        </div>
-        <!--end::Sidebar Search-->
-        <!--begin::Sidebar Wrapper-->
-        <div class="sidebar-wrapper">
-          <nav class="mt-2" aria-label="Main navigation">
-            <!--begin::Sidebar Menu-->
-            <ul
-              class="nav sidebar-menu flex-column"
-              data-lte-toggle="treeview"
-              data-accordion="false"
-              id="navigation"
-            >
-              
-              <li class="nav-item">
-                <a href="{{ route('users') }}" class="nav-link">
-                  <i class="nav-icon bi bi-people"></i>
-                  <p>Users</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('disease-stats') }}" target="_blank" class="nav-link">
-                  <i class="nav-icon bi bi-bar-chart"></i>
-                  <p>สถิติโรคสัตว์ (หน้าเว็บ)</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('disease-reports') }}" class="nav-link">
-                  <i class="nav-icon bi bi-clipboard-data"></i>
-                  <p>Disease Reports CRUD</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('test-blv') }}" target="_blank" class="nav-link">
-                  <i class="nav-icon bi bi-code-slash"></i>
-                  <p>Test BLV API (JSON)</p>
-                </a>
-              </li>
-
-              
-            <!--end::Sidebar Menu-->
-
-            <!-- Docs CTA (bottom of sidebar) -->
-            <div class="p-3 mt-3 border-top border-secondary border-opacity-25">
-              <a
-                href="./docs/introduction.html"
-                class="btn btn-sm btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2"
-              >
-                <i class="bi bi-book" aria-hidden="true"></i>
-                View documentation
-              </a>
-            </div>
-          </nav>
-        </div>
-        <!--end::Sidebar Wrapper-->
+        </li>
+        <li class="section-title">จัดการข้อมูล</li>
+        <li class="{{ request()->routeIs('users','addusers','edituser') ? 'active' : '' }}">
+          <a class="sidenav-item-link" href="{{ route('users') }}">
+            <i class="mdi mdi-account-group"></i>
+            <span class="nav-text">ผู้ใช้งาน</span>
+          </a>
+        </li>
+        <li class="{{ request()->routeIs('pet-reports') ? 'active' : '' }}">
+          <a class="sidenav-item-link" href="{{ route('pet-reports') }}"><i class="mdi mdi-paw"></i><span class="nav-text">จัดการประกาศสัตว์เลี้ยง</span></a>
+        </li>
+        <li class="section-title">หน้าบ้าน</li>
+        <li>
+          <a class="sidenav-item-link" href="{{ route('home') }}" target="_blank">
+            <i class="mdi mdi-home-outline"></i>
+            <span class="nav-text">ดูหน้าเว็บ</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </aside>

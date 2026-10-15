@@ -1,113 +1,36 @@
 <div>
-    <main class="app-main">
-        <!--begin::App Content Header-->
-        <div class="app-content-header">
-            <!--begin::Container-->
-            <div class="container-fluid">
-                <!--begin::Row-->
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h1 class="mb-0 fs-3">Simple Tables</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb float-sm-end">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Simple Tables</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-                <!--end::Row-->
-            </div>
-            <!--end::Container-->
+{{-- ตารางผู้ใช้ Mono --}}
+<div class="row">
+  <div class="col-12">
+    <div class="card card-default">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+          <h2>ผู้ใช้งาน</h2>
+          <p class="text-muted mb-0">ทั้งหมด {{ $users->count() }} คน</p>
         </div>
-        <!--end::App Content Header-->
-        <!--begin::App Content-->
-        <div class="app-content">
-            <!--begin::Container-->
-            <div class="container-fluid">
-                <!--begin::Row-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <h3 class="card-title">User Table</h3>
-                                <br>
-                                <a href="{{ route('addusers') }}" class="btn btn-primary">Addusers</a>
-
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th style="width: 10px">Id</th>
-                                            <th>Firstname</th>
-                                            <th>Email</th>
-                                            <th style="width: 150px">Manage</th>
-                                            <th>วันที่สร้าง</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($users as $data)
-                                        <tr class="align-middle">
-                                            <td>{{ $data->id }}</td>
-                                            <td>{{ $data->name }}</td>
-                                            <td>{{ $data->email }}</td>
-                                            <td>
-                                                <a href="{{ route('edituser', ['id' => $data->id]) }}" class="btn btn-primary">Edit</a>
-                                                <button type="button" wire:click='delete({{ $data->id }})' class="btn btn-danger">Delete</button>
-                                            </td>
-                                            <td>{{ $data->created_at }}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.card-body -->
-                            <div class="card-footer clearfix">
-                                <div class="progress" style="width: 100%">
-                                </div>
-                            </div>
-                            </td>
-                            </tr>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer clearfix">
-                            <ul class="pagination pagination-sm m-0 float-end">
-                                <li class="page-item">
-                                    <a class="page-link" href="#">&laquo;</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">&raquo;</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /.card -->
-
-
-                    <!-- /.card -->
-                </div>
-                <!-- /.col -->
-
-                <!-- /.col -->
-            </div>
-            <!--end::Row-->
+        <a href="{{ route('addusers') }}" class="btn btn-primary btn-sm">+ เพิ่มผู้ใช้</a>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead><tr><th>ID</th><th>ชื่อ</th><th>อีเมล</th><th>จัดการ</th></tr></thead>
+            <tbody>
+              @foreach($users as $u)
+              <tr>
+                <td>{{ $u->id }}</td>
+                <td>{{ $u->name }}</td>
+                <td>{{ $u->email }}</td>
+                <td>
+                  <a href="{{ route('edituser', $u->id) }}" class="btn btn-sm btn-warning">แก้ไข</a>
+                  <button class="btn btn-sm btn-danger" wire:click="delete({{ $u->id }})" onclick="return confirm('ลบผู้ใช้นี้?')">ลบ</button>
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
         </div>
-        <!--end::Container-->
+      </div>
+    </div>
+  </div>
 </div>
-<!--end::App Content-->
-</main>
 </div>

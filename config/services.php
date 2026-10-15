@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    // คีย์ Google Maps เก็บใน .env เท่านั้น (GOOGLE_MAPS_API_KEY) ห้าม hardcode ลง blade
+    'google' => [
+        'maps_key' => env('GOOGLE_MAPS_API_KEY'),
+    ],
+
 ];

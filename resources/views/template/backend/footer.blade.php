@@ -1,12 +1,7 @@
-<footer class="app-footer">
-        <!--begin::To the end-->
-        <div class="float-end d-none d-sm-inline">Anything you want</div>
-        <!--end::To the end-->
-        <!--begin::Copyright-->
-        <strong>
-          Copyright &copy; 2014-2026&nbsp;
-          <a href="https://adminlte.io" class="text-decoration-none">AdminLTE.io</a>.
-        </strong>
-        All rights reserved.
-        <!--end::Copyright-->
-      </footer>
+<!-- Mono footer (ท้ายหลังบ้าน) -->
+<footer class="footer mt-auto">
+  <div class="copyright bg-white">
+    <p>Pet Finder หลังบ้าน (Mono) &copy; {{ date('Y') }} — สัตว์หายแจ้งเบาะแส | <a class="text-primary" href="{{ route('home') }}" target="_blank">ดูหน้าเว็บ</a></p>
+  </div>
+  <script>var d = new Date(); var year = d.getFullYear(); document.getElementById("copy-year") && (document.getElementById("copy-year").textContent = year);</script>
+</footer>

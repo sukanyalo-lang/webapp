@@ -1,82 +1,21 @@
 <div>
-    <div>
-    <main class="app-main">
-        <div class="app-content-header">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h1 class="mb-0 fs-3">การแก้ไข</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb float-sm-end">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Validation</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+{{-- ฟอร์มแก้ไขผู้ใช้ Mono --}}
+<div class="row justify-content-center">
+  <div class="col-lg-6">
+    <div class="card card-default">
+      <div class="card-header"><h2>แก้ไขผู้ใช้ #{{ $idd }}</h2></div>
+      <form wire:submit.prevent="updateuser">
+        <div class="card-body">
+          <div class="form-group"><label>ชื่อ *</label><input type="text" wire:model="name" class="form-control" required></div>
+          <div class="form-group"><label>อีเมล *</label><input type="email" wire:model="email" class="form-control" required></div>
+          <div class="form-group"><label>รหัสผ่านใหม่ (เว้นว่าง = ไม่เปลี่ยน)</label><input type="password" wire:model="password" class="form-control" placeholder="เว้นว่างถ้าไม่เปลี่ยน"></div>
         </div>
-        <div class="app-content">
-            <div class="container-fluid">
-                <div class="row g-4">
-                    <!-- Custom validation -->
-                    <div class="col-lg-6">
-                        <div class="card card-info card-outline mb-4">
-                            <div class="card-header">
-                                <div class="card-title">Edit user</div>
-                            </div>
-                            <form wire:submit.prevent="updateuser" class="needs-validation" novalidate>
-                                <div class="card-body">
-                                    <div class="row g-3">
-                                        <div class="col-md-12">
-                                            <label for="validationCustom01" class="form-label">Name</label>
-                                            <input
-                                                type="text"
-                                                wire:model="name"
-                                                class="form-control"
-                                                id="validationCustom01"
-                                                required />
-                                            <div class="valid-feedback">Looks good!</div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label for="validationCustom02" class="form-label">Email</label>
-                                            <input
-                                                type="email"
-                                                wire:model="email"
-                                                class="form-control"
-                                                id="validationCustom02"
-                                                required />
-                                            <div class="valid-feedback">Looks good!</div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label for="validationCustomUsername" class="form-label">Password</label>
-                                            <div class="input-group has-validation">
-                                                <input
-                                                    type="password"
-                                                    wire:model="password"
-                                                    class="form-control"
-                                                    id="validationCustomUsername"
-                                                    aria-describedby="inputGroupPrepend"
-                                                    required />
-                                                <div class="invalid-feedback">Please choose a password.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button class="btn btn-info" type="submit">Submit form</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Browser-default validation + tooltips -->
-                </div>
-            </div>
+        <div class="card-footer d-flex gap-2">
+          <button class="btn btn-primary" type="submit">บันทึก</button>
+          <a href="{{ route('users') }}" class="btn btn-secondary">กลับ</a>
         </div>
-    </main>
+      </form>
     </div>
+  </div>
+</div>
 </div>

@@ -11,21 +11,25 @@ class Editusertable extends Component
 
     public function updateuser()
     {
-        User::Where("id", $this->idd)->update([
+        // อัปเดตชื่อ/อีเมลเสมอ ส่วนรหัสเปลี่ยนเฉพาะเมื่อกรอกใหม่ (แฮชก่อนบันทึก)
+        $data = [
             "name" => $this->name,
             "email" => $this->email,
-            "password" => $this->password
-        ]);
-         return redirect()->to(route('users'));
+        ];
+        if (!empty($this->password)) {
+            $data["password"] = bcrypt($this->password);
+        }
+        User::where("id", $this->idd)->update($data);
+        return redirect()->to(route('users'));
     }
-    
+
     public function mount(int $id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $this->idd = $user->id;
         $this->name = $user->name;
         $this->email = $user->email;
-        $this->password = $user->password;
+        $this->password = ''; // เว้นว่างไว้ ไม่โชว์แฮชเดิม
     }
     public function render()
     {

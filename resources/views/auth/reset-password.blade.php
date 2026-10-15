@@ -1,36 +1,38 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+@extends('template.frontend.master') {{-- ครอบ Classimax --}}
+@section('content')
+    <section class="login py-5 border-top-1">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-8 align-items-center">
+                    <div class="border">
+                        <h3 class="bg-gray p-4">ตั้งรหัสผ่านใหม่</h3>
+                        <form method="POST" action="{{ route('password.update') }}">
+                            @csrf
+                            <input type="hidden" name="token" value="{{ request()->route('token') }}">
+                            <fieldset class="p-4">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul class="mb-0">
+                                            @foreach ($errors->all() as $e)
+                                                <li>{{ $e }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
 
-        <x-validation-errors class="mb-4" />
+                                <input class="form-control mb-3" type="email" name="email" placeholder="อีเมล*"
+                                    value="{{ old('email', request()->email) }}" required autofocus autocomplete="username">
+                                <input class="form-control mb-3" type="password" name="password"
+                                    placeholder="รหัสผ่านใหม่ (8+ ตัว)*" required autocomplete="new-password">
+                                <input class="form-control mb-3" type="password" name="password_confirmation"
+                                    placeholder="ยืนยันรหัสผ่าน*" required autocomplete="new-password">
 
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
-
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
-
-            <div class="block">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
+                                <button type="submit" class="btn btn-primary font-weight-bold mt-3">บันทึกรหัสผ่านใหม่</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Reset Password') }}
-                </x-button>
-            </div>
-        </form>
-    </x-authentication-card>
-</x-guest-layout>
+        </div>
+    </section>
+@endsection

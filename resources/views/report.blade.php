@@ -1,104 +1,13 @@
-@extends('template.backend.master')
+@extends('template.frontend.master')
 @section('content')
-
-
-
-    <main class="container page">
-
-        <div class="eyebrow">PET FINDER / REPORT</div>
-
-        <h1>แจ้งสัตว์เลี้ยงหาย</h1>
-
-        <p class="intro">
-            กรอกรายละเอียดของสัตว์เลี้ยงที่หายไป
-            เพื่อให้ผู้คนช่วยกันตามหาและเพิ่มโอกาสให้เพื่อนตัวน้อยได้กลับบ้าน
-        </p>
-
-        <div class="form-card">
-            <form id="reportForm">
-
-                <div class="form-grid">
-
-                    <div class="field">
-                        <label for="animalType">ประเภทสัตว์เลี้ยง *</label>
-                        <select id="animalType" required>
-                            <option value="">เลือกประเภทสัตว์</option>
-                            <option>แมว</option>
-                            <option>สุนัข</option>
-                            <option>กระต่าย</option>
-                            <option>แฮมสเตอร์</option>
-                            <option>หนูแกสบี้</option>
-                            <option>นกเลี้ยง</option>
-                            <option>ปลา</option>
-                            <option>อื่น ๆ</option>
-                        </select>
-                    </div>
-
-                    <div class="field">
-                        <label for="animalName">ชื่อสัตว์เลี้ยง *</label>
-                        <input id="animalName" type="text"
-                               placeholder="เช่น ไมโล" required>
-                    </div>
-
-                    <div class="field">
-                        <label for="reporterName">ชื่อผู้แจ้ง *</label>
-                        <input id="reporterName" type="text"
-                               placeholder="ชื่อของคุณ" required>
-                    </div>
-
-                    <div class="field">
-                        <label for="contact">ช่องทางติดต่อ *</label>
-                        <input id="contact" type="text"
-                               placeholder="เบอร์โทรหรือ LINE" required>
-                    </div>
-
-                    <div class="field">
-                        <label for="date">วันที่พบเห็นครั้งสุดท้าย *</label>
-                        <input id="date" type="date" required>
-                    </div>
-
-                    <div class="field">
-                        <label for="location">สถานที่ที่หาย *</label>
-                        <input id="location" type="text"
-                               placeholder="เขต/อำเภอ จังหวัด" required>
-                    </div>
-
-                    <div class="field full">
-                        <label for="details">รายละเอียดเพิ่มเติม *</label>
-                        <textarea id="details"
-                            placeholder="สี ลักษณะ จุดสังเกต ปลอกคอ หรือข้อมูลที่ช่วยในการตามหา"
-                            required></textarea>
-                    </div>
-
-                    <div class="field full">
-                        <label for="photo">รูปภาพสัตว์เลี้ยง</label>
-                        <input id="photo" type="file" accept="image/*">
-                        <span class="hint">
-                            เลือกไฟล์รูปภาพได้ แต่ตัวอย่างนี้ยังไม่ได้อัปโหลดรูปไปยังเซิร์ฟเวอร์
-                        </span>
-                    </div>
-
-                </div>
-
-                <div class="actions">
-                    <button type="submit" class="main-button">
-                        ส่งข้อมูลแจ้งสัตว์หาย →
-                    </button>
-
-                    <a class="secondary-button" href="{{ url('/') }}">
-                        กลับหน้าหลัก
-                    </a>
-                </div>
-
-                <div class="success" id="successMessage">
-                    รับข้อมูลตัวอย่างเรียบร้อยแล้ว
-                    แต่ยังไม่ได้บันทึกลงฐานข้อมูลจริง
-                </div>
-
-            </form>
-        </div>
-    </main>
-
+<section class="section"><div class="container"><div class="row justify-content-center"><div class="col-lg-9"><div class="border-0 p-4 p-md-5" style="border-radius:20px;box-shadow:0 12px 40px rgba(20,50,30,.09)"><span class="text-uppercase text-muted small">Create a report</span><h2 class="font-weight-bold mt-2">ลงประกาศสัตว์หาย / พบสัตว์</h2><p class="text-muted">กรอกข้อมูลให้ครบเพื่อช่วยให้ชุมชนสังเกตและติดต่อกลับได้ง่ายขึ้น</p>
+@if(!auth()->check())<div class="alert alert-info">กรุณา <a href="{{ route('login') }}">เข้าสู่ระบบ</a> หรือ <a href="{{ route('register') }}">สมัครสมาชิก</a> ก่อนลงประกาศ</div>@else
+@if($errors->any())<div class="alert alert-danger"><strong>กรุณาตรวจสอบข้อมูล</strong><ul class="mb-0 mt-2">@foreach($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul></div>@endif
+<form action="{{ route('report.store') }}" method="POST" enctype="multipart/form-data">@csrf
+<div class="form-row"><div class="form-group col-md-6"><label>ประเภทประกาศ *</label><select name="status" class="form-control" required><option value="lost" @selected(old('status')==='lost')>สัตว์เลี้ยงหาย</option><option value="found" @selected(old('status')==='found')>พบสัตว์ / ตามหาเจ้าของ</option></select></div><div class="form-group col-md-6"><label>ประเภทสัตว์ *</label><select name="pet_type" class="form-control" required>@foreach(['แมว','สุนัข','นก','กระต่าย','อื่นๆ'] as $type)<option value="{{ $type }}" @selected(old('pet_type')===$type)>{{ $type }}</option>@endforeach</select></div></div>
+<div class="form-row"><div class="form-group col-md-6"><label>ชื่อสัตว์ *</label><input name="pet_name" value="{{ old('pet_name') }}" class="form-control" required maxlength="100" placeholder="เช่น ไมโล"></div><div class="form-group col-md-6"><label>พันธุ์</label><input name="breed" value="{{ old('breed') }}" class="form-control" placeholder="ถ้าทราบ"></div></div>
+<div class="form-row"><div class="form-group col-md-6"><label>สี / ลักษณะเด่น</label><input name="color" value="{{ old('color') }}" class="form-control" placeholder="เช่น สีส้ม ปลอกคอสีแดง"></div><div class="form-group col-md-6"><label>วันที่พบเห็นล่าสุด</label><input type="date" name="last_seen_at" value="{{ old('last_seen_at') }}" max="{{ now()->toDateString() }}" class="form-control"></div></div>
+<div class="form-group"><label>สถานที่หาย / พบสัตว์ *</label><input name="location" value="{{ old('location') }}" class="form-control" required placeholder="บ้านเลขที่ ถนน ตำบล/อำเภอ จังหวัด"></div><div class="form-group"><label>รายละเอียดเพิ่มเติม *</label><textarea name="description" rows="4" class="form-control" required maxlength="3000" placeholder="ลักษณะนิสัย จุดสังเกต และเหตุการณ์ที่เกิดขึ้น">{{ old('description') }}</textarea></div><div class="form-group"><label>รูปสัตว์ (JPG, PNG, WEBP ไม่เกิน 5 MB)</label><input type="file" name="photo" class="form-control-file" accept="image/jpeg,image/png,image/webp"></div>
+<hr><h5 class="font-weight-bold mb-3">ข้อมูลติดต่อ</h5><div class="form-row"><div class="form-group col-md-6"><label>ชื่อผู้ติดต่อ *</label><input name="contact_name" value="{{ old('contact_name', auth()->user()->name) }}" class="form-control" required></div><div class="form-group col-md-6"><label>เบอร์โทรศัพท์ *</label><input name="contact_phone" value="{{ old('contact_phone') }}" class="form-control" required maxlength="30" placeholder="เบอร์ที่ติดต่อได้"></div></div><button class="btn btn-primary btn-lg" type="submit">บันทึกประกาศ</button> <a href="{{ route('pets') }}" class="btn btn-outline-secondary btn-lg">ยกเลิก</a></form>@endif
+</div></div></div></div></section>
 @endsection
-
-
