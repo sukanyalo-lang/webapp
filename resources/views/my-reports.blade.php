@@ -31,7 +31,8 @@
                                 <td><strong>{{ $pet->pet_name }}</strong><br><small class="text-muted">{{ $pet->pet_type }}
                                         @if ($pet->breed)
                                             · {{ $pet->breed }}
-                                        @endif{{ $pet->color ? ' · ' . $pet->color : '' }}</small>
+                                        @endif{{ $pet->color ? ' · ' . $pet->color : '' }}
+                                    </small>
                                     @if ($pet->last_seen_at)
                                         <br><small class="text-muted">พบเห็น:
                                             {{ $pet->last_seen_at->format('d/m/Y') }}</small>

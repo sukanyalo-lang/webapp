@@ -140,16 +140,24 @@
                     <div class="col-lg-4 col-md-6 mb-4">
 
                         <article class="pf-card">
+
                             <div class="pf-card-img">
                                 @if ($pet->photo_path)
-                                    <img src="{{ asset('storage/' . $pet->photo_path) }}"
-                                        alt="{{ $pet->pet_name }}" style="width:100%; height:190px; object-fit:cover;"
+                                    <img src="{{ asset('storage/' . $pet->photo_path) }}" alt="{{ $pet->pet_name }}"
+                                        style="width:100%; height:190px; object-fit:cover;"
                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                    <i class="fa fa-paw" style="display:none; font-size:30px;"></i>
+                                    <div style="display:none; text-align:center; padding:30px;">
+                                        <i class="fa fa-paw" style="font-size:30px;"></i>
+                                        <p>โหลดรูปไม่สำเร็จ</p>
+                                    </div>
                                 @else
-                                    <i class="fa fa-paw"></i>
+                                    <div style="text-align:center; padding:30px;">
+                                        <i class="fa fa-paw" style="font-size:30px;"></i>
+                                        <p>ไม่มีข้อมูลรูปภาพ</p>
+                                    </div>
                                 @endif
                             </div>
+
 
                             <div class="pf-card-body">
                                 <span class="pf-chip {{ $pet->status === 'found' ? 'found' : '' }}">
