@@ -11,9 +11,16 @@
                             class="mdi mdi-home-outline icon"></i></a></li>
                 <li class="dropdown user-menu">
                     <button class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <img src="{{ asset('asset/backend/images/user/user-xs-01.jpg') }}"
-                            class="user-image rounded-circle" alt="ผู้ใช้"
-                            onerror="this.src='{{ asset('asset/backend/images/logo.png') }}'" />
+    <img
+        src="{{ Auth::user()->profile_photo_url }}"
+        class="user-image rounded-circle"
+        alt="{{ Auth::user()->name }}"
+        style="width: 40px; height: 40px; object-fit: cover;"
+    />
+    <span class="d-none d-lg-inline-block">
+        {{ Auth::user()->name }}
+    </span>
+</button>
                         <span class="d-none d-lg-inline-block">{{ Auth::user()->name ?? 'แอดมิน' }}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
