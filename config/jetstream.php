@@ -57,13 +57,15 @@ return [
     |
     */
 
-    'features' => [
-        // Features::termsAndPrivacyPolicy(),
-        // Features::profilePhotos(),
-        // Features::api(),
-        // Features::teams(['invitations' => true]),
-        Features::accountDeletion(),
-    ],
+    
+'features' => [
+    // Features::termsAndPrivacyPolicy(),
+    Features::profilePhotos(),
+    // Features::api(),
+    // Features::teams(['invitations' => true]),
+    Features::accountDeletion(),
+],
+
 
     /*
     |--------------------------------------------------------------------------

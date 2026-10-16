@@ -93,12 +93,27 @@
                 @forelse($pets as $pet)
                     <div class="col-lg-4 col-md-6 mb-4 pet-columns">
                         <article class="pet-list-card">
-                            <div class="pet-list-image">
-                                @if ($pet->photo_path)
-                                    <img src="{{ asset('storage/' . $pet->photo_path) }}" alt="{{ $pet->pet_name }}"
-                                    style="width:100%;height:185px;object-fit:cover">@else<i class="fa fa-paw"></i>
-                                @endif
-                            </div>
+                            
+<div class="pet-list-image">
+    @if ($pet->photo_path)
+        <img
+            src="{{ \Illuminate\Support\Facades\Storage::url($pet->photo_path) }}"
+            alt="{{ $pet->pet_name ?? 'สัตว์เลี้ยง' }}"
+            style="width:100%; height:185px; object-fit:cover;"
+            onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        >
+        <div class="pet-image-placeholder"
+             style="display:none; width:100%; height:185px; align-items:center; justify-content:center;">
+            <i class="fa fa-paw" style="font-size:2.5rem;"></i>
+        </div>
+    @else
+        <div class="pet-image-placeholder"
+             style="display:flex; width:100%; height:185px; align-items:center; justify-content:center;">
+            <i class="fa fa-paw" style="font-size:2.5rem;"></i>
+        </div>
+    @endif
+</div>
+
                             <div class="pet-list-body"><span
                                     class="pet-status {{ $pet->status === 'found' ? 'found' : '' }}">{{ $pet->status === 'found' ? 'พบสัตว์' : 'สัตว์หาย' }}</span>
                                 <h4 class="font-weight-bold mt-3">{{ $pet->pet_name }}</h4>
