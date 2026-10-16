@@ -18,5 +18,7 @@ class Usertable extends Component
                     ->get();
         
         return view('livewire.usertable', compact('users'));
+
+        // return view('livewire.usertable');
     }
 }
